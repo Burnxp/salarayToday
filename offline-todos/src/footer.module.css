@@ -1,0 +1,42 @@
+/* in deiner globalen CSS (z. B. index.css, App.css) */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 8px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.footerNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #00aced; /* z. B. ein helles Blau */
+}
+
+.link img {
+  width: 24px;
+  height: 24px;
+}

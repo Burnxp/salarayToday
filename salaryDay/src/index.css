@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(116, 185, 131);
+}
+
+body{
+  text-align: center;
+  margin: 2rem;
+}
+
+#app{
+  padding: 1rem;
+  background-color: rgba(240, 248, 255, 0.5);
+  border-radius: 1rem;
+}
+
+.ueberschrift {
+  color: rgba(0, 0, 0, 0.644);
+}
+
+p {
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+button, input {
+  color: green;
+  padding: 0.7rem;
+  margin: 0.3rem;
+  font-size: 1.3rem;
+}
+
+button:hover{
+  color: white;
+  background-color: green;
+}
+
+#stdLohn{
+  width: 1.5rem;
+  text-align: center;
+}
