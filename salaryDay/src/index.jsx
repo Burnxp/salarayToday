@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { Rechner } from './logik';
 import { StdLohn } from './stdLohn';
-
+import {NavigationsBar} from './navigation';
 import { useState } from "react";
 
 // App-Container erzeugen, falls nicht vorhanden
@@ -24,7 +24,7 @@ export function App() {
   );
 }
 
-function Title(){
+export function Title(){
     return <h1 
     className='ueberschrift'>
     SALARY DAY</h1>
@@ -38,5 +38,6 @@ root.render(
     <>
         <Title />
         <App />
+        <NavigationsBar />
     </>
 )

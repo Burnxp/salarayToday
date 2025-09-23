@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { calculateNightShiftMinutes } from "./nachtSchicht";
 import { useFeiertage } from "./feierTage";
+import { ResultView } from "./result";
 
 // Hilfsfunktion: Stunden und Minuten in Minuten umrechnen
 const hourToMin = (time) => {
@@ -66,16 +67,17 @@ export function Rechner({ stdLohn }) {
 
     const arbeitszeitStunden = diff / 60;
 
-    let lohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
-
+    let arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
+    let gesamtLohn = arbeitsZeitLohn;
     let sonntagsZuschlag = 0;
     let feiertagsZuschlag = 0;
+    
 
     const sonntag = () => {
       if (weekday(inputValue) === "Sonntag") {
         // Sonntagszuschlag muss gezahlt werden!
         sonntagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0);
-        lohn = lohn + sonntagsZuschlag; // Angenommen Zuschlag 100%
+        gesamtLohn = arbeitsZeitLohn + sonntagsZuschlag; // Angenommen Zuschlag 100%
       } else {
         sonntagsZuschlag = 0;
       }
@@ -84,7 +86,7 @@ export function Rechner({ stdLohn }) {
     // 👉 Feiertags-Check
     if (feiertage.includes(inputValue)) {
       feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * 1.75;
-      lohn += feiertagsZuschlag;
+      gesamtLohn += feiertagsZuschlag;
     }
 
     let feinPlanZuschlag = 40;
@@ -96,20 +98,23 @@ export function Rechner({ stdLohn }) {
     );
     console.log("Nachtstunden:", nachtstunden);
     const nachtZuschlag = nachtstunden * (parseFloat(stdLohn) * 0.25); // angenommen 25% ns Zuschlag
-    lohn += nachtZuschlag;
+    gesamtLohn += nachtZuschlag;
     if (feinPlanRef.current?.checked) {
-      lohn += feinPlanZuschlag;
+      gesamtLohn += feinPlanZuschlag;
     } else {
       feinPlanZuschlag = 0;
     }
-
+    const gesamtZuschlaege =
+    sonntagsZuschlag + feiertagsZuschlag + nachtZuschlag + feinPlanZuschlag;
     const newResult = {
       arbeitszeit: arbeitszeitStunden.toFixed(2),
-      lohn: lohn.toFixed(2),
+      arbeitsZeitLohn: arbeitsZeitLohn.toFixed(2),
       feinPlanZuschlag: feinPlanZuschlag,
       sonntagsZuschlag: sonntagsZuschlag,
-      nachtZuschlag: nachtZuschlag,
+      nachtZuschlag: nachtZuschlag.toFixed(2),
       feierTagZuschlag: feiertagsZuschlag.toFixed(2),
+      gesamtLohn: gesamtLohn.toFixed(2),
+      gesamtZuschlaege: gesamtZuschlaege.toFixed(2),
     };
     setResult(newResult);
     console.log(newResult);
@@ -137,13 +142,19 @@ export function Rechner({ stdLohn }) {
           <input type="checkbox" ref={feinPlanRef} />
         </label>
       </div>
+            <div className="pause">
+        <label>
+          Pause (unbezahlt 30 Min): // Wird noch hinzugefügt
+          {/* <input type="checkbox" ref={pause} /> */}
+        </label>
+      </div>
 
       <div className="workTime">
         <p>
           Arbeitszeit:
           <input type="date" value={inputValue} onChange={dateHandleChange} />
         </p>
-        <div>Aktueller Input-Wert:{weekday(inputValue)}</div>
+        
 
         <p>
           <input
@@ -161,25 +172,8 @@ export function Rechner({ stdLohn }) {
 
         <button onClick={berechneLohn}>Berechnen</button>
       </div>
-
-      {result && (
-        <div className="result flexbox">
-          <p className="flexItem">Arbeitszeit Lohn: {result.lohn} €</p>
-          <p className="flexItem">Arbeitszeit: {result.arbeitszeit} Stunden</p>
-          <p className="flexItem">
-            Nachtzuschlag: {result.nachtZuschlag || 0} €
-          </p>
-          <p className="flexItem">
-            Sonntagszuschlag: {result.sonntagsZuschlag || 0} €
-          </p>
-          <p className="flexItem">
-            Feiertagszuschlag: {result.feierTagZuschlag || 0} €
-          </p>
-          <p className="flexItem">
-            Feinplanzuschlag: {result.feinPlanZuschlag} €
-          </p>
-        </div>
-      )}
+      
+      <ResultView result={result}/>
     </div>
   );
 }

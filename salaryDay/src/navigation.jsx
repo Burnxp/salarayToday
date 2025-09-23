@@ -8,20 +8,20 @@ export function NavigationsBar(){
     return (
     
     <nav className="footer-nav">
-    <a href="">
+{/*     <a href="">
       <img src= {homeImg} alt="Startseite" />
       <span>Startseite</span>
     </a>
         <a href="">
       <img src={profilImg} alt="Profil" />
       <span>Profil</span>
-    </a>
-    <a href="">
+    </a> */}
+    <a href="./index.html">
       <img src={euroImg} alt="Lohnrechner" />
       <span>Lohnrechner</span>
     </a>
 
-    <a href="">
+    <a href="./einstellungen.html">
       <img src={settingImg} alt="Einstellungen" />
       <span>Einstellungen</span>
     </a>

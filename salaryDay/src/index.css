@@ -14,25 +14,34 @@ body{
   padding: 1rem;
   background-color: rgba(240, 248, 255, 0.5);
   border-radius: 1rem;
-  height: 90vh;
+  height: 88vh;
 }
 
 .ueberschrift {
   color: rgba(0, 0, 0, 0.644);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow: 8px -10px 4px rgba(0, 0, 0, 0.253);
+  
 }
 
 p {
-  padding: 1rem;
-  font-size: 2rem;
+  padding: 0.7rem;
+  font-size: 1.7rem;
 }
 
 button, input {
   color: rgb(247, 250, 247);
   padding: 0.7rem;
   margin: 0.3rem;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   background-color: rgb(107, 190, 111);
+  
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+}
+
+button {
+  border-radius: 0.8rem;
+  transition: background 0.001s ease 0.005s; /* 0.5s Verzögerung */
 }
 
 button:hover{
@@ -41,7 +50,7 @@ button:hover{
 }
 
 #stdLohn{
-  width: 1.5rem;
+  width: 1.2rem;
   text-align: center;
 }
 
@@ -51,13 +60,13 @@ button:hover{
 
 .result p{
   font-size: 1rem;
-  background-color: rgb(128, 45, 45);
+  background-color: rgba(71, 128, 45, 0.24);
   width: 40%;
 }
 
 .flexbox {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -86,4 +95,29 @@ button:hover{
 
 .feinplanzuschlag p  {
   font-size: 1.5rem;
+}
+
+
+
+/*  */
+
+
+.footer-nav{
+  position: fixed;
+  
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: white;
+  text-align: center;
+  padding: 0.4rem;
+}
+.footer-nav a{
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+.footer-nav a:hover{
+  text-decoration: underline;
 }
