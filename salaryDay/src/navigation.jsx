@@ -5,6 +5,10 @@ import settingImg from './assets/img/setting.svg';
 
 import { Link } from 'react-router-dom';
 
+import packageJson from '../package.json'
+
+
+
 
 
 export function NavigationsBar(){
@@ -20,6 +24,7 @@ export function NavigationsBar(){
     <img src={settingImg} alt="Einstellungen" />
     <span>Einstellungen</span>
   </Link>
+  <div className='version'>App Version: {packageJson.version}</div>
 </nav>
 
     

@@ -144,3 +144,12 @@ button:active {
   transform: translateY(-2px);
 }
 
+
+.version {
+  margin-top: .3rem;
+  margin-bottom: -1rem;
+  font-size: 0.8rem;
+  color: #ccc;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
