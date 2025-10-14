@@ -1,7 +1,7 @@
 {   
     "name": "Salary_Day",
     "short_name": "SalDay",
-    "start_url": "/index.html",
+    "start_url": "/",
     "orientation":"any",
     "display":"fullscreen",
     "dir":"auto",
