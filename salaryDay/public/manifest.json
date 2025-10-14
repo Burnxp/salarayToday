@@ -1,0 +1,10 @@
+{   
+    "name": "Salary_Day",
+    "short_name": "SalDay",
+    "start_url": "/index.html",
+    "orientation":"any",
+    "display":"fullscreen",
+    "dir":"auto",
+    "lang":"de-DE"
+
+}

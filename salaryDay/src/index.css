@@ -1,68 +1,84 @@
 * {
   margin: 0;
   padding: 0;
-  
 }
 
-body{
+body {
   text-align: center;
   margin: 2rem;
-  background-color: green;
+  background-color: #f0f2f5; /* helles, modernes Grau statt grün */
+  font-family: 'Inter', sans-serif; /* Fließtext */
+
 }
 
-#app{
-  padding: 1rem;
-  background-color: rgba(240, 248, 255, 0.5);
+#app {
+  padding: 0.5rem;
+  background-color: #ffffffcc; /* leicht transparentes Weiß */
   border-radius: 1rem;
-  height: 88vh;
+  padding-bottom: 4rem; /* Platz für die Footer-Navigation */
+  
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  
 }
 
 .ueberschrift {
-  color: rgba(0, 0, 0, 0.644);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-shadow: 8px -10px 4px rgba(0, 0, 0, 0.253);
-  
+  color: #333;
+  font-family: 'Lucida Sans', 'Lucida Grande', sans-serif;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 p {
   padding: 0.7rem;
   font-size: 1.7rem;
+  color: #444;
 }
 
 button, input {
-  color: rgb(247, 250, 247);
+  color: #fff;
   padding: 0.7rem;
   margin: 0.3rem;
   font-size: 1.1rem;
-  background-color: rgb(107, 190, 111);
-  
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
-}
-
-button {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe); /* moderner Farbverlauf */
+  border: none;
   border-radius: 0.8rem;
-  transition: background 0.001s ease 0.005s; /* 0.5s Verzögerung */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-button:hover{
-  color: white;
-  background-color: green;
+button:hover {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-#stdLohn{
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+#stdLohn {
   width: 1.2rem;
   text-align: center;
 }
 
 .result {
   margin-top: 1rem;
+  
+}
+.result p {
+  font-size: 0.8rem;
+  background-color: #e0e0ff;
+  width: 100%;            /* maximal innerhalb des Containers */
+  max-width: 400px;       /* optional, für große Bildschirme */
+  margin: 0.2 auto;    /* zentriert + Abstand */
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  box-sizing: border-box; /* Padding wird zur Breite dazu gerechnet */
+  word-wrap: break-word;  /* Text umbrechen, falls nötig */
 }
 
-.result p{
-  font-size: 1rem;
-  background-color: rgba(71, 128, 45, 0.24);
-  width: 40%;
-}
 
 .flexbox {
   display: flex;
@@ -71,53 +87,60 @@ button:hover{
   width: 100%;
 }
 
-.flexItem{
+.flexItem {
   flex: 1 1;
   margin: 0.1rem;
-  padding: 0.3rem;
-  border-radius: .2rem;
+  padding: 0.1rem;
+  border-radius: 0.2rem;
+  background-color: #f7f7ff;
 }
 
-.workTime{
+.workTime {
   text-align: left;
-
 }
-.workTime input{
+
+.workTime input {
   padding: 0.3rem;
   margin: 0.1rem;
-  color: rgba(0, 0, 0, 0.815) ;
+  color: #333;
   width: fit-content;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
 }
-.workTime button{
+
+.workTime button {
   width: 100%;
-  
 }
 
-.feinplanzuschlag p  {
+.feinplanzuschlag p {
   font-size: 1.5rem;
+  color: #555;
 }
 
-
-
-/*  */
-
-
-.footer-nav{
+/* Footer Navigation */
+.footer-nav {
   position: fixed;
-  
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.644);
+  background-color: #2d2d44; /* dunkles, edles Lila-Blau */
   color: white;
   text-align: center;
-  padding: 0.4rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
 }
-.footer-nav a{
-  color: white;
+
+.footer-nav a {
+  color: #ffffff;
   text-decoration: none;
   margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
-.footer-nav a:hover{
-  text-decoration: underline;
+
+.footer-nav a:hover {
+  color: #a29bfe;
+  transform: translateY(-2px);
 }
+

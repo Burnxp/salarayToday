@@ -1,6 +1,6 @@
 
 import { createRoot } from 'react-dom/client';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Rechner } from './logik';
 import { StdLohn } from './stdLohn';
 import {NavigationsBar} from './navigation';
@@ -13,9 +13,9 @@ if (!document.getElementById("app")) {
   document.body.appendChild(appDiv);
 }
 
-export function App() {
-  const [stdLohn, setStdLohn] = useState(localStorage.getItem("stdLohn") || "");
 
+function LohnrechnerPage() {
+  const [stdLohn, setStdLohn] = useState(localStorage.getItem("stdLohn") || "");
   return (
     <>
       <StdLohn stdLohn={stdLohn} setStdLohn={setStdLohn} />
@@ -30,14 +30,21 @@ export function Title(){
     SALARY DAY</h1>
 }
 
+function EinstellungenPage() {
+  return <h2>Einstellungen</h2>; // Hier später dein Einstellungen-Formular
+}
+
 
 
 const root = createRoot(document.getElementById('app'));
 
 root.render(
-    <>
-        <Title />
-        <App />
-        <NavigationsBar />
-    </>
+    <BrowserRouter>
+    <Title />
+    <Routes>
+      <Route path="/" element={<LohnrechnerPage />} />
+      <Route path="/einstellungen" element={<EinstellungenPage />} />
+    </Routes>
+    <NavigationsBar />
+  </BrowserRouter>
 )
