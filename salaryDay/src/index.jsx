@@ -31,7 +31,16 @@ export function Title(){
 }
 
 function EinstellungenPage() {
-  return <h2>Einstellungen</h2>; // Hier später dein Einstellungen-Formular
+  return <>
+  <h2>Einstellungen</h2>; // Hier später dein Einstellungen-Formular
+      <h2>
+        Hier können in kürze Einstellungen vorgenommen werden.
+        Höhe der Zuschläge.
+
+        Nachtschichtzuschlag, Feiertagszuschlag, Sonntagszuschlag, 
+        Stundenzuschläge,....
+    </h2>
+  </>
 }
 
 
@@ -41,7 +50,9 @@ const root = createRoot(document.getElementById('app'));
 root.render(
     <BrowserRouter>
     <Title />
+    
     <Routes>
+      
       <Route path="/" element={<LohnrechnerPage />} />
       <Route path="/einstellungen" element={<EinstellungenPage />} />
     </Routes>
