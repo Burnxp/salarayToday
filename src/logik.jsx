@@ -24,7 +24,7 @@ const weekday = (dateString) => {
   return days[today.getDay()];
 };
 
-export function Rechner({ stdLohn, sonntagszuschlag }) {
+export function Rechner({ stdLohn, sonntagszuschlag, feiertagszuschlag, nachtzuschlag, feinplanzuschlag}) {
   const today = new Date().toISOString().split("T")[0];
   const feiertage = useFeiertage(new Date().getFullYear());
   // States
@@ -86,11 +86,12 @@ export function Rechner({ stdLohn, sonntagszuschlag }) {
 
     // 👉 Feiertags-Check
     if (feiertage.includes(inputValue)) {
-      feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * 1.75;
+      feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (feiertagszuschlag/100); // 
+      console.log("Feiertagszuschlag:", feiertagsZuschlag);
       gesamtLohn += feiertagsZuschlag;
     }
 
-    let feinPlanZuschlag = 40;
+    
     sonntag(inputValue);
     const nachtstunden = calculateNightShiftMinutes(
       startTime,
@@ -98,20 +99,22 @@ export function Rechner({ stdLohn, sonntagszuschlag }) {
       inputValue
     );
     console.log("Nachtstunden:", nachtstunden);
-    const nachtZuschlag = nachtstunden * (parseFloat(stdLohn) * 0.25); // angenommen 25% ns Zuschlag
+    const nachtZuschlag = nachtstunden * (parseFloat(stdLohn) * (nachtzuschlag/100)); // angenommen 25% ns Zuschlag
     gesamtLohn += nachtZuschlag;
-    if (feinPlanRef.current?.checked) {
-      gesamtLohn += feinPlanZuschlag;
-    } else {
-      feinPlanZuschlag = 0;
-    }
+    let feinPlanZuschlag = 0;
+
+if (feinPlanRef.current?.checked) {
+  // sicherstellen, dass feinplanzuschlag als Zahl behandelt wird
+  feinPlanZuschlag = parseFloat(feinplanzuschlag || 0);
+  gesamtLohn += feinPlanZuschlag;
+}
     const gesamtZuschlaege =
     sonntagsZuschlag + feiertagsZuschlag + nachtZuschlag + feinPlanZuschlag;
     const newResult = {
       arbeitszeit: arbeitszeitStunden.toFixed(2),
       arbeitsZeitLohn: arbeitsZeitLohn.toFixed(2),
-      feinPlanZuschlag: feinPlanZuschlag,
-      sonntagsZuschlag: sonntagsZuschlag,
+      feinPlanZuschlag: feinPlanZuschlag.toFixed(2),
+      sonntagsZuschlag: sonntagsZuschlag.toFixed(2),
       nachtZuschlag: nachtZuschlag.toFixed(2),
       feierTagZuschlag: feiertagsZuschlag.toFixed(2),
       gesamtLohn: gesamtLohn.toFixed(2),

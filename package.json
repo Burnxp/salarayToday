@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "version:build": "npm version patch && npm run build && git push origin main --tags",
+    "version:build": "git add . && git commit -m \"save changes\" && npm version patch && npm run build && git push origin main --tags",
     "deploy:xampp": "npx copyfiles -u 1 dist/**/* C:/xampp/htdocs/Salary_Day"
   },
   "dependencies": {

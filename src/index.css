@@ -165,3 +165,10 @@ button:active {
   font-size: 1.4rem;
   color: #333;
   margin-top: 0.3rem;}
+
+  input{
+    background-color: #f0f0ff;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 0.5rem;  }

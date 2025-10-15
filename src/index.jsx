@@ -51,13 +51,16 @@ function EinstellungenPage() {
 }
 
 function LohnrechnerPage() {
-  const [stdLohn, setStdLohn] = useState(localStorage.getItem("stdLohn") || "");
+  const [stdLohn, setStdLohn] = useState(localStorage.getItem("stdLohn") || "10");
     const [sonntagszuschlag] = useState(localStorage.getItem("Sonntagszuschlag") || "");
+    const [feiertagszuschlag] = useState(localStorage.getItem("Feiertagszuschlag") || "");
+    const [nachtzuschlag] = useState(localStorage.getItem("Nachtzuschlag") || "");
+    const [feinplanzuschlag] = useState(localStorage.getItem("Feinplanzuschlag") || "");  
   
   return (
     <>
       <StdLohn stdLohn={stdLohn} setStdLohn={setStdLohn} />
-      <Rechner stdLohn={stdLohn} sonntagszuschlag={sonntagszuschlag}/>
+      <Rechner stdLohn={stdLohn} sonntagszuschlag={sonntagszuschlag} feiertagszuschlag={feiertagszuschlag} nachtzuschlag={nachtzuschlag} feinplanzuschlag={feinplanzuschlag} />
  
     </>
   );
