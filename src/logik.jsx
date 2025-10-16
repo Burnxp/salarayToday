@@ -75,13 +75,26 @@ export function Rechner({ stdLohn, sonntagszuschlag, feiertagszuschlag, nachtzus
 
     const sonntag = () => {
       if (weekday(inputValue) === "Sonntag") {
+        if(endTime < startTime) {
+          // Schicht geht über Mitternacht
+          const minutesBeforeMidnight = hourToMin("24:00") - start; // Minuten vor Mitternacht
+          sonntagsZuschlag = (minutesBeforeMidnight / 60) * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0) / 100);
+        }
+        if(startTime < endTime) {
         // Sonntagszuschlag muss gezahlt werden!
         sonntagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0) / 100);
-        console.log("Sonntagszuschlag:", sonntagszuschlag);
+        console.log("Sonntagszuschlag:", sonntagszuschlag);}
         gesamtLohn = arbeitsZeitLohn + sonntagsZuschlag; // Angenommen Zuschlag 100%
       } else {
         sonntagsZuschlag = 0;
       }
+      if (weekday(inputValue) === "Samstag") {
+        if(endTime < startTime) {
+          // Schicht geht über Mitternacht
+          const minNachMitternacht = end; // Minuten nach Mitternacht
+          sonntagsZuschlag = (minNachMitternacht / 60) * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0) / 100);  // Zuschlag nur für Stunden nach Mitternacht
+          console.log("Sonntagszuschlag:", sonntagsZuschlag, end);   
+        }}
     };
 
     // 👉 Feiertags-Check
@@ -103,6 +116,7 @@ export function Rechner({ stdLohn, sonntagszuschlag, feiertagszuschlag, nachtzus
     gesamtLohn += nachtZuschlag;
     let feinPlanZuschlag = 0;
 
+    // Wurde Feinplanzuschlag angehakt?
 if (feinPlanRef.current?.checked) {
   // sicherstellen, dass feinplanzuschlag als Zahl behandelt wird
   feinPlanZuschlag = parseFloat(feinplanzuschlag || 0);
