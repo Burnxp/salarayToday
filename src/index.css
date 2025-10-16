@@ -172,3 +172,8 @@ button:active {
     color: #333;
     font-size: 1.1rem;
     padding: 0.5rem;  }
+
+    .smal {
+      font-size: 0.8rem;
+      color: #777;
+    }

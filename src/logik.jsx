@@ -35,6 +35,8 @@ export function Rechner({ stdLohn, sonntagszuschlag, feiertagszuschlag, nachtzus
   const [result, setResult] = useState(null);
 
   const feinPlanRef = useRef(null);
+  const feinPlanRefHalf = useRef(null);
+  // const pause = useRef(null); // Wird noch hinzugefügt
 
   const zeiten = {
     frueh: { start: "05:30", ende: "13:45" },
@@ -122,6 +124,10 @@ if (feinPlanRef.current?.checked) {
   feinPlanZuschlag = parseFloat(feinplanzuschlag || 0);
   gesamtLohn += feinPlanZuschlag;
 }
+if (feinPlanRefHalf.current?.checked) {
+  feinPlanZuschlag = (parseFloat(feinplanzuschlag || 0)) / 2;
+  gesamtLohn += feinPlanZuschlag;
+}
     const gesamtZuschlaege =
     sonntagsZuschlag + feiertagsZuschlag + nachtZuschlag + feinPlanZuschlag;
     const newResult = {
@@ -156,8 +162,9 @@ if (feinPlanRef.current?.checked) {
 
       <div className="feinplanzuschlag">
         <label>
-          Feinplanzuschlag:
-          <input type="checkbox" ref={feinPlanRef} />
+          Feinplanzuschlag <span className="smal">(Komplett oder &frac12;)</span>: <br />
+          <input name="feinPlan" type="radio" ref={feinPlanRef} />
+          <input name="feinPlan" type="radio" ref={feinPlanRefHalf} />
         </label>
       </div>
             <div className="pause">
