@@ -163,9 +163,10 @@ if (feinPlanRefHalf.current?.checked) {
       <div className="feinplanzuschlag">
         <label>
           Feinplanzuschlag <span className="smal">(Komplett oder &frac12;)</span>: <br />
-          <input name="feinPlan" type="radio" ref={feinPlanRef} />
-          <input name="feinPlan" type="radio" ref={feinPlanRefHalf} />
-        </label>
+
+          1:<input name="feinPlan" type="checkbox" ref={feinPlanRef} /> 
+          &nbsp; &frac12;:<input name="feinPlan" type="checkbox" ref={feinPlanRefHalf} />
+        </label><br />
       </div>
             <div className="pause">
         <label>
