@@ -37,6 +37,7 @@ export function StdLohn({ stdLohn, setStdLohn }){
             type="number" 
             id="stdLohn" 
             className="inputfeld"
+            
             value= {stdLohn} 
             onChange= {(e) => setStdLohn(e.target.value)}/>
             <button onClick={wertSpeichern}>Speichern</button>

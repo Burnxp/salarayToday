@@ -56,11 +56,19 @@ function LohnrechnerPage() {
     const [feiertagszuschlag] = useState(localStorage.getItem("Feiertagszuschlag") || "");
     const [nachtzuschlag] = useState(localStorage.getItem("Nachtzuschlag") || "");
     const [feinplanzuschlag] = useState(localStorage.getItem("Feinplanzuschlag") || "");  
+    const [pause] = useState(localStorage.getItem("Pause") || "");
   
   return (
     <>
       <StdLohn stdLohn={stdLohn} setStdLohn={setStdLohn} />
-      <Rechner stdLohn={stdLohn} sonntagszuschlag={sonntagszuschlag} feiertagszuschlag={feiertagszuschlag} nachtzuschlag={nachtzuschlag} feinplanzuschlag={feinplanzuschlag} />
+      <Rechner 
+      stdLohn={stdLohn} 
+      sonntagszuschlag={sonntagszuschlag} 
+      feiertagszuschlag={feiertagszuschlag} 
+      nachtzuschlag={nachtzuschlag} 
+      feinplanzuschlag={feinplanzuschlag} 
+      pause={pause}
+      />
  
     </>
   );

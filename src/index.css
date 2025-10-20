@@ -171,9 +171,17 @@ button:active {
     border: 1px solid #ccc;
     color: #333;
     font-size: 1.1rem;
-    padding: 0.5rem;  }
+    padding: .5rem;  
+    
+  }
 
     .smal {
       font-size: 0.8rem;
       color: #777;
+    }
+
+    .inputfeld {
+      min-width: 3rem;
+      text-align: center;
+      
     }
