@@ -5,15 +5,16 @@
 
 body {
   text-align: center;
-  margin: 2rem;
-  background-color: #f0f2f5; /* helles, modernes Grau statt grün */
+  margin: 1rem;
+  background-color: #ffffffcc; /* leicht transparentes Weiß */
   font-family: 'Inter', sans-serif; /* Fließtext */
 
 }
 
 #app {
   padding: 0.5rem;
-  background-color: #ffffffcc; /* leicht transparentes Weiß */
+  
+  background: linear-gradient(135deg, #2b2c2b3d, #0f311717); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
   padding-bottom: 4rem; /* Platz für die Footer-Navigation */
   
@@ -39,7 +40,7 @@ button, input {
   padding: 0.7rem;
   margin: 0.3rem;
   font-size: 1.1rem;
-  background: linear-gradient(135deg, #6c5ce7, #a29bfe); /* moderner Farbverlauf */
+  background: linear-gradient(135deg, #5efc038a, #0f31173d); /* moderner Farbverlauf */
   border: none;
   border-radius: 0.8rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -48,7 +49,7 @@ button, input {
 }
 
 button:hover {
-  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  background: linear-gradient(135deg, #5efc038a, #0f31173d);
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
@@ -69,7 +70,7 @@ button:active {
 }
 .result p {
   font-size: 0.8rem;
-  background-color: #e0e0ff;
+  background-color: #11f53711;
   width: 100%;            /* maximal innerhalb des Containers */
   max-width: 400px;       /* optional, für große Bildschirme */
   margin: 0.2 auto;    /* zentriert + Abstand */
@@ -92,7 +93,7 @@ button:active {
   margin: 0.1rem;
   padding: 0.1rem;
   border-radius: 0.2rem;
-  background-color: #f7f7ff;
+  background-color: #f7fff8;
 }
 
 .workTime {
@@ -123,7 +124,7 @@ button:active {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #2d2d44; /* dunkles, edles Lila-Blau */
+  background-color: #3a5733; /* dunkles, edles Lila-Blau */
   color: white;
   text-align: center;
   padding: 1rem;

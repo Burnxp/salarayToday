@@ -2,7 +2,9 @@ import { useState, useRef } from "react";
 import { calculateNightShiftMinutes } from "./nachtSchicht";
 import { useFeiertage } from "./feierTage";
 import { ResultView } from "./result";
+import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 
+// function noch nicht aktiviert Variablen müssen noch definiert werden
 function pauseAbzug() {
         if (nachtstunden > 4) {
           nsStd = nsStd - 0.5;
@@ -63,8 +65,9 @@ export function Rechner({
   const [endTime, setEndTime] = useState("13:45");
   const [result, setResult] = useState(null);
 
-  const feinPlanRef = useRef(null);
-  const feinPlanRefHalf = useRef(null);
+const [feinPlanChecked, setFeinPlanChecked] = useState(false);
+const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
+
   const pause = useRef(null);
   // const pause = useRef(null); // Wird noch hinzugefügt
 
@@ -161,18 +164,10 @@ export function Rechner({
     const nachtZuschlag =
       nachtstunden * (parseFloat(stdLohn) * (nachtzuschlag / 100)); // angenommen 25% ns Zuschlag
     gesamtLohn = gesamtLohnPlus(nachtZuschlag);
-    let feinPlanZuschlag = 0;
 
-    // Wurde Feinplanzuschlag angehakt?
-    if (feinPlanRef.current?.checked) {
-      // sicherstellen, dass feinplanzuschlag als Zahl behandelt wird
-      feinPlanZuschlag = parseFloat(feinplanzuschlag || 0);
-      gesamtLohn = gesamtLohnPlus(feinPlanZuschlag);
-    }
-    if (feinPlanRefHalf.current?.checked) {
-      feinPlanZuschlag = parseFloat(feinplanzuschlag || 0) / 2;
-      gesamtLohn = gesamtLohnPlus(feinPlanZuschlag);
-    }
+    const feinPlanZuschlag = calculateFeinPlanZuschlag(feinPlanChecked, feinPlanHalfChecked, feinplanzuschlag);
+    gesamtLohn += feinPlanZuschlag;
+
 
     if (pause.current?.checked) {
       // 30 Minuten Pause abziehen
@@ -216,9 +211,23 @@ export function Rechner({
           Feinplanzuschlag{" "}
           <span className="smal">(Komplett oder &frac12;)</span>: <br />
           1:
-          <input name="feinPlan" type="checkbox" ref={feinPlanRef} />
-          &nbsp; &frac12;:
-          <input name="feinPlan" type="checkbox" ref={feinPlanRefHalf} />
+         <input
+  type="checkbox"
+  checked={feinPlanChecked}
+  onChange={(e) => {
+    setFeinPlanChecked(e.target.checked);
+    if (e.target.checked) setFeinPlanHalfChecked(false);
+  }}
+/>
+1/2:
+<input
+  type="checkbox"
+  checked={feinPlanHalfChecked}
+  onChange={(e) => {
+    setFeinPlanHalfChecked(e.target.checked);
+    if (e.target.checked) setFeinPlanChecked(false);
+  }}
+/>
         </label>
       </div>
       <div className="pause">

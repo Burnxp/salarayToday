@@ -34,7 +34,7 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString) {
       const timeOfDay = i % 1440;
       for (const period of nightPeriods) {
         if (timeOfDay >= period.start && timeOfDay < period.end) {
-          nightMinutes += 15;
+          nightMinutes ++;
           break;
         }
       }
