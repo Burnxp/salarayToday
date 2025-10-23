@@ -8,6 +8,9 @@ import { useZuschlaege } from "./hooks/useZuschlaege";
 import {NavigationsBar} from './navigation';
 import { useState } from "react";
 
+import Impressum from './pages/impressum';
+import Datenschutz from './pages/datenschutz';
+
 // App-Container erzeugen, falls nicht vorhanden
 if (!document.getElementById("app")) {
   const appDiv = document.createElement("div");
@@ -18,13 +21,14 @@ if (!document.getElementById("app")) {
 
 
 function LohnrechnerPage() {
-  const [stdLohn, setStdLohn] = useState(localStorage.getItem("stdLohn") || "10");
+  
   const {sonntagszuschlag,
     feiertagszuschlag,
     nachtzuschlag,
     feinplanzuschlag,
     nachtzeitenStart,
     nachtzeitenEnd,
+    stdLohn
   } = useZuschlaege();
     const [pause] = useState(localStorage.getItem("Pause") || "");
   
@@ -65,6 +69,8 @@ root.render(
       
       <Route path="/" element={<LohnrechnerPage />} />
       <Route path="/einstellungen" element={<EinstellungenPage />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />      
     </Routes>
     <NavigationsBar />
   </BrowserRouter>

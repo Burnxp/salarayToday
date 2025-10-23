@@ -6,11 +6,11 @@ export function useZuschlaege() {
   const [feiertagszuschlag, setFeiertagszuschlag] = useState(() => localStorage.getItem("Feiertagszuschlag") || "");
   const [nachtzuschlag, setNachtzuschlag] = useState(() => localStorage.getItem("Nachtzuschlag") || "");
   const [feinplanzuschlag, setFeinplanzuschlag] = useState(() => localStorage.getItem("Feinplanzuschlag") || "");
-  
+  const [stdLohn, setStdLohn] = useState(() => localStorage.getItem("stdLohn") || "10");
   
    // 🔥 neue Zustände für Nachtzeiten
-  const [nachtzeitenStart, setNachtzeitenStart] = useState(localStorage.getItem("nachtzeitenStart") || "22:00");
-  const [nachtzeitenEnd, setNachtzeitenEnd] = useState(localStorage.getItem("nachtzeitenEnd") || "06:00");
+  const [nachtzeitenStart, setNachtzeitenStart] = useState(localStorage.getItem("nachtzeitenStart") || "21:00");
+  const [nachtzeitenEnd, setNachtzeitenEnd] = useState(localStorage.getItem("nachtzeitenEnd") || "05:00");
 
   // Synchronisiere Änderungen mit dem lokalen Speicher
   useEffect(() => {
@@ -24,6 +24,10 @@ export function useZuschlaege() {
   useEffect(() => {
     localStorage.setItem("Nachtzuschlag", nachtzuschlag);
   }, [nachtzuschlag]);
+
+  useEffect(() => {
+    localStorage.setItem("stdLohn", stdLohn);
+  }, [stdLohn]);
 
   useEffect(() => {
     localStorage.setItem("Feinplanzuschlag", feinplanzuschlag);
@@ -44,5 +48,7 @@ export function useZuschlaege() {
     nachtzeitenEnd,
     setNachtzeitenStart,
     setNachtzeitenEnd,
+    stdLohn,
+    setStdLohn
   };
 }

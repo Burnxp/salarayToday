@@ -23,8 +23,19 @@ export function NavigationsBar(){
   <Link to="/einstellungen">
     <img src={settingImg} alt="Einstellungen" />
     <span>Einstellungen</span>
+  </Link> <br/>
+  
+  <br/>
+
+  <Link to="/impressum" className="impressum-link">
+    <span className='smal imDa'>Impressum</span>
   </Link>
-  <div className='version'>App Version: {packageJson.version}</div>
+  <Link to="/datenschutz" className="datenschutz-link">
+    <span className='smal imDa'>Datenschutz</span>
+  </Link>
+
+  <div className="smal">App Version: {packageJson.version}</div> 
+  
 </nav>
 
     

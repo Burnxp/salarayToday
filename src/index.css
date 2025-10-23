@@ -13,7 +13,7 @@ body {
 
 #app {
   padding: 0.5rem 0.5rem 0.5rem;
-  margin-bottom: 6rem; /* Platz für die Footer-Navigation */
+  margin-bottom: 7rem; /* Platz für die Footer-Navigation */
   
   background: linear-gradient(135deg, #2b2c2b3d, #0f311752); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
@@ -125,12 +125,11 @@ button:active {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #3a5733; /* dunkles, edles Lila-Blau */
+  background-color: #3a5733; /* dunkleres Grün */
   color: white;
   text-align: center;
-  padding: 1rem;
-  padding-bottom: 2rem;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+  padding: 0.5rem 0 0.2rem 0;
+  
 }
 
 .footer-nav a {
@@ -147,14 +146,7 @@ button:active {
 }
 
 
-.version {
-  margin-top: .3rem;
-  margin-bottom: -1rem;
-  font-size: 0.8rem;
-  color: #ccc;
-  font-family: 'Courier New', Courier, monospace;
-  
-}
+
 
 .zuschlagStyle {
   font-size: 1.2rem;
@@ -179,11 +171,34 @@ button:active {
 
     .smal {
       font-size: 0.8rem;
-      color: #777;
+      color: #747373;
+      
     }
+
 
     .inputfeld {
       min-width: 3rem;
       text-align: center;
       
+    }
+
+    .datenSchutz {
+      text-align: left;
+      
+      
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .datenSchutz h1 {
+      font-size: 1.5rem;
+      color: #222;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .datenSchutz p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
     }

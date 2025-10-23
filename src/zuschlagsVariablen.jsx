@@ -3,8 +3,8 @@ import { useState } from "react";
 export function Zuschlag({ name, wert, setWert }) {
   const [saved, setSaved] = useState(wert !== "");
   
-  let einheit = name.toLowerCase().includes("feinplanzuschlag") ? " €" : " %";
-  einheit = name.toLowerCase().includes("nachtzeiten") ? " (HH:MM, z.B. 22:00-06:00)" : einheit;
+  const einheit = name.toLowerCase().includes("feinplanzuschlag") ? " €" : " %";
+ 
 
   function wertSpeichern() {
     localStorage.setItem(name, wert);
