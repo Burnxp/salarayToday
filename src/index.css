@@ -71,7 +71,7 @@ button:active {
 }
 .result p {
   font-size: 0.8rem;
-  background-color: #11f53711;
+  background-color: #d8d8d8a4;
   width: 100%;            /* maximal innerhalb des Containers */
   max-width: 400px;       /* optional, für große Bildschirme */
   margin: 0.2 auto;    /* zentriert + Abstand */
@@ -95,6 +95,7 @@ button:active {
   padding: 0.1rem;
   border-radius: 0.2rem;
   background-color: #f7fff8;
+  box-shadow: inset 0 1px 1px rgb(152, 153, 152);
 }
 
 .workTime {
