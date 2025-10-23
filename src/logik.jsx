@@ -5,6 +5,8 @@ import { ResultView } from "./result";
 import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 import { useZuschlaege } from "./hooks/useZuschlaege";
 
+
+
      
 
 // Hilfsfunktion: Stunden und Minuten in Minuten umrechnen
@@ -90,14 +92,57 @@ const berechneLohn = () => {
   let feiertagsZuschlag = 0, feiertagsStd = 0;
 
   if (weekday(inputValue) === "Sonntag") {
-    sonntagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100);
+    
+     
+      // Sonntagszuschlag berechnen 
+        if (endTime < startTime) {
+          // Schicht geht über Mitternacht
+          const minutesBeforeMidnight = hourToMin("24:00") - start; // Minuten vor Mitternacht
+          sonntagsStd = minutesBeforeMidnight / 60;
+          sonntagsZuschlag =
+            sonntagsStd *
+            parseFloat(stdLohn || 0) *
+            (parseFloat(sonntagszuschlag || 0) / 100);
+            
+        }
+
+        // komplette Stunden am Sonntag
+        if (startTime < endTime) {
+          // Sonntagszuschlag muss gezahlt werden!
+          sonntagsZuschlag =
+            arbeitszeitStunden *
+            parseFloat(stdLohn || 0) *
+            (parseFloat(sonntagszuschlag || 0) / 100);
+          console.log("Sonntagszuschlag:", sonntagszuschlag);
+        }
+        gesamtLohn += sonntagsZuschlag;
+      
+      
+    
     sonntagsStd = arbeitszeitStunden;
+    console.log('Sonntag Zuschlag:', sonntagsZuschlag);
   }
+  if (weekday(inputValue) === "Samstag") {
+        console.log("Samstag gearbeitet, kein Sonntagszuschlag");
+        if (endTime < startTime) {
+          // Schicht geht über Mitternacht
+          console.log("Schicht geht über Mitternacht! Sonntagszuschlag berechnen.");
+          const minNachMitternacht = end; // Minuten nach Mitternacht
+          sonntagsZuschlag =
+            (minNachMitternacht / 60) *
+            parseFloat(stdLohn || 0) *
+            (parseFloat(sonntagszuschlag || 0) / 100); // Zuschlag nur für Stunden nach Mitternacht
+          console.log("Sonntagszuschlag:", sonntagsZuschlag, end);
+          gesamtLohn += sonntagsZuschlag;
+          sonntagsStd = minNachMitternacht / 60;
+        }
+      }
 
   if (feiertage.includes(inputValue)) {
     feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
     feiertagsStd = arbeitszeitStunden;
   }
+ 
 
   gesamtLohn += sonntagsZuschlag + feiertagsZuschlag;
 
@@ -117,27 +162,25 @@ const berechneLohn = () => {
     console.log('arbeitszeitStunden vor Pause:', arbeitszeitStunden, arbeitsZeitLohn);
     arbeitszeitStunden -=  abzug;
     arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
-    console.log(gesamtLohn)
+    
     if (nachtstunden > 4) nachtstunden -= abzug;
     if (sonntagsStd > 4) sonntagsStd -= abzug;
     if (feiertagsStd > 4) feiertagsStd -= abzug;
     console.log(nachtstunden, sonntagsStd, feiertagsStd);
-    console.log(gesamtLohn)
-
+    
+    
     sonntagsZuschlag = sonntagsStd > 0 ? sonntagsStd * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100) : 0;
     feiertagsZuschlag = feiertagsStd > 0 ? feiertagsStd * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100) : 0;
     nachtZuschlag = nachtstunden > 0 ? nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100) : 0;
 
   }
-
-  // Gesamtzuschläge nach Abzug neu berechnen
-  const gesamtZuschlaege =
-    (sonntagsStd > 0 ? sonntagsStd * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100) : 0) +
-    (feiertagsStd > 0 ? feiertagsStd * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100) : 0) +
-    (nachtstunden > 0 ? nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100) : 0) +
-    feinPlanZuschlag;
-  console.log(gesamtZuschlaege);
-  console.log(gesamtLohn)
+let gesamtZuschlaege = 0;
+  gesamtZuschlaege = sonntagsZuschlag + feiertagsZuschlag + nachtZuschlag + feinPlanZuschlag;
+  console.log('sonntagsZuschlag', sonntagsZuschlag);
+  console.log('feiertagsZuschlag', feiertagsZuschlag);
+  console.log('nachtZuschlag', nachtZuschlag);
+  console.log('feinPlanZuschlag', feinPlanZuschlag);
+  /* console.log('gesamtZuschlaege', gesamtZuschlaege);  */ 
   gesamtLohn = arbeitsZeitLohn + gesamtZuschlaege;
   console.log(gesamtLohn);
   setResult({
