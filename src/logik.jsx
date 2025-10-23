@@ -3,29 +3,8 @@ import { calculateNightShiftMinutes } from "./nachtSchicht";
 import { useFeiertage } from "./feierTage";
 import { ResultView } from "./result";
 import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
+import { useZuschlaege } from "./hooks/useZuschlaege";
 
-// function noch nicht aktiviert Variablen müssen noch definiert werden
-function pauseAbzug() {
-        if (nachtstunden > 4) {
-          nsStd = nsStd - 0.5;
-        }
-      
-        if (sonntagsStunden > 4) {
-          soStd = soStd - 0.5;
-        }
-      
-        if (feiertagsStunden > 4) {
-          feiTagStd = feiTagStd - 0.5;
-        }
-      
-        if (samstagMittagStd > 4) {
-          samstagMittagStd = samstagMittagStd - 0.5;
-        }
-      
-        arbeitszeitStunden = arbeitszeitStunden - 0.5;
-      
-        pause.checked = false;
-}     
      
 
 // Hilfsfunktion: Stunden und Minuten in Minuten umrechnen
@@ -49,13 +28,15 @@ const weekday = (dateString) => {
   return days[today.getDay()];
 };
 
-export function Rechner({
-  stdLohn,
-  sonntagszuschlag,
-  feiertagszuschlag,
-  nachtzuschlag,
-  feinplanzuschlag,
-}) {
+export function Rechner({stdLohn}) {
+  const {
+    sonntagszuschlag,
+    feiertagszuschlag,
+    nachtzuschlag,
+    feinplanzuschlag,
+    nachtzeitenStart,
+    nachtzeitenEnd
+  } = useZuschlaege();
   const today = new Date().toISOString().split("T")[0];
   const feiertage = useFeiertage(new Date().getFullYear());
   // States
@@ -93,102 +74,84 @@ const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
     }
   };
 
-  const berechneLohn = () => {
-    const start = hourToMin(startTime);
-    const end = hourToMin(endTime);
+const berechneLohn = () => {
+  const start = hourToMin(startTime);
+  const end = hourToMin(endTime);
 
-    let diff = end - start;
-    if (diff < 0) diff += 24 * 60; // Wenn Tageswechsel
+  let diff = end - start;
+  if (diff < 0) diff += 24 * 60; // Tageswechsel
 
-    const arbeitszeitStunden = diff / 60;
+  let arbeitszeitStunden = diff / 60;
+  let arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
+  let gesamtLohn = arbeitsZeitLohn;
 
-    let arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
-    let gesamtLohn = arbeitsZeitLohn;
-    let sonntagsZuschlag = 0;
-    let feiertagsZuschlag = 0;
-    const gesamtLohnPlus = (zuschlag) => gesamtLohn + zuschlag;
+  // Zuschläge nur berechnen, wenn sie > 0
+  let sonntagsZuschlag = 0, sonntagsStd = 0;
+  let feiertagsZuschlag = 0, feiertagsStd = 0;
 
-    const sonntag = () => {
-      if (weekday(inputValue) === "Sonntag") {
-        if (endTime < startTime) {
-          // Schicht geht über Mitternacht
-          const minutesBeforeMidnight = hourToMin("24:00") - start; // Minuten vor Mitternacht
-          sonntagsZuschlag =
-            (minutesBeforeMidnight / 60) *
-            parseFloat(stdLohn || 0) *
-            (parseFloat(sonntagszuschlag || 0) / 100);
-        }
-        if (startTime < endTime) {
-          // Sonntagszuschlag muss gezahlt werden!
-          sonntagsZuschlag =
-            arbeitszeitStunden *
-            parseFloat(stdLohn || 0) *
-            (parseFloat(sonntagszuschlag || 0) / 100);
-          console.log("Sonntagszuschlag:", sonntagszuschlag);
-        }
-        gesamtLohn = gesamtLohnPlus(sonntagsZuschlag);
-      } else {
-        sonntagsZuschlag = 0;
-      }
-      if (weekday(inputValue) === "Samstag") {
-        if (endTime < startTime) {
-          // Schicht geht über Mitternacht
-          const minNachMitternacht = end; // Minuten nach Mitternacht
-          sonntagsZuschlag =
-            (minNachMitternacht / 60) *
-            parseFloat(stdLohn || 0) *
-            (parseFloat(sonntagszuschlag || 0) / 100); // Zuschlag nur für Stunden nach Mitternacht
-          console.log("Sonntagszuschlag:", sonntagsZuschlag, end);
-          gesamtLohn = gesamtLohnPlus(sonntagsZuschlag);
-        }
-      }
-    };
+  if (weekday(inputValue) === "Sonntag") {
+    sonntagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100);
+    sonntagsStd = arbeitszeitStunden;
+  }
 
-    // 👉 Feiertags-Check
-    if (feiertage.includes(inputValue)) {
-      feiertagsZuschlag =
-        arbeitszeitStunden *
-        parseFloat(stdLohn || 0) *
-        (feiertagszuschlag / 100); //
-      console.log("Feiertagszuschlag:", feiertagsZuschlag);
-      gesamtLohn = gesamtLohnPlus(feiertagsZuschlag);
-    }
+  if (feiertage.includes(inputValue)) {
+    feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
+    feiertagsStd = arbeitszeitStunden;
+  }
 
-    sonntag(inputValue);
-    const nachtstunden = calculateNightShiftMinutes(
-      startTime,
-      endTime,
-      inputValue
-    );
-    console.log("Nachtstunden:", nachtstunden);
-    const nachtZuschlag =
-      nachtstunden * (parseFloat(stdLohn) * (nachtzuschlag / 100)); // angenommen 25% ns Zuschlag
-    gesamtLohn = gesamtLohnPlus(nachtZuschlag);
+  gesamtLohn += sonntagsZuschlag + feiertagsZuschlag;
 
-    const feinPlanZuschlag = calculateFeinPlanZuschlag(feinPlanChecked, feinPlanHalfChecked, feinplanzuschlag);
-    gesamtLohn += feinPlanZuschlag;
+  let nachtstunden = calculateNightShiftMinutes(
+    startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd
+  );
+  let nachtZuschlag = nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100);
+  gesamtLohn += nachtZuschlag;
 
+  const feinPlanZuschlag = calculateFeinPlanZuschlag(feinPlanChecked, feinPlanHalfChecked, parseFloat(feinplanzuschlag || 0));
+  gesamtLohn += feinPlanZuschlag;
 
-    if (pause.current?.checked) {
-      // 30 Minuten Pause abziehen
-      pauseAbzug()
-    }
+  // Pause abziehen
+  if (pause.current?.checked) {
+    // 30 Minuten Pause abziehen
+    const abzug = 0.5; // 30 min
+    console.log('arbeitszeitStunden vor Pause:', arbeitszeitStunden, arbeitsZeitLohn);
+    arbeitszeitStunden -=  abzug;
+    arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
+    console.log(gesamtLohn)
+    if (nachtstunden > 4) nachtstunden -= abzug;
+    if (sonntagsStd > 4) sonntagsStd -= abzug;
+    if (feiertagsStd > 4) feiertagsStd -= abzug;
+    console.log(nachtstunden, sonntagsStd, feiertagsStd);
+    console.log(gesamtLohn)
 
-    const gesamtZuschlaege =
-      sonntagsZuschlag + feiertagsZuschlag + nachtZuschlag + feinPlanZuschlag;
-    const newResult = {
-      arbeitszeit: arbeitszeitStunden.toFixed(2),
-      arbeitsZeitLohn: arbeitsZeitLohn.toFixed(2),
-      feinPlanZuschlag: feinPlanZuschlag.toFixed(2),
-      sonntagsZuschlag: sonntagsZuschlag.toFixed(2),
-      nachtZuschlag: nachtZuschlag.toFixed(2),
-      feierTagZuschlag: feiertagsZuschlag.toFixed(2),
-      gesamtLohn: gesamtLohn.toFixed(2),
-      gesamtZuschlaege: gesamtZuschlaege.toFixed(2),
-    };
-    setResult(newResult);
-    console.log(newResult);
-  };
+    sonntagsZuschlag = sonntagsStd > 0 ? sonntagsStd * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100) : 0;
+    feiertagsZuschlag = feiertagsStd > 0 ? feiertagsStd * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100) : 0;
+    nachtZuschlag = nachtstunden > 0 ? nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100) : 0;
+
+  }
+
+  // Gesamtzuschläge nach Abzug neu berechnen
+  const gesamtZuschlaege =
+    (sonntagsStd > 0 ? sonntagsStd * parseFloat(stdLohn || 0) * (parseFloat(sonntagszuschlag || 0)/100) : 0) +
+    (feiertagsStd > 0 ? feiertagsStd * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100) : 0) +
+    (nachtstunden > 0 ? nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100) : 0) +
+    feinPlanZuschlag;
+  console.log(gesamtZuschlaege);
+  console.log(gesamtLohn)
+  gesamtLohn = arbeitsZeitLohn + gesamtZuschlaege;
+  console.log(gesamtLohn);
+  setResult({
+    arbeitszeit: arbeitszeitStunden.toFixed(2),
+    arbeitsZeitLohn: arbeitsZeitLohn.toFixed(2),
+    sonntagsZuschlag: sonntagsZuschlag.toFixed(2),
+    feierTagZuschlag: feiertagsZuschlag.toFixed(2),
+    nachtZuschlag: nachtZuschlag.toFixed(2),
+    feinPlanZuschlag: feinPlanZuschlag.toFixed(2),
+    gesamtZuschlaege: gesamtZuschlaege.toFixed(2),
+    gesamtLohn: gesamtLohn.toFixed(2)
+  });
+};
+
 
   return (
     <div>
@@ -229,11 +192,11 @@ const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
   }}
 />
         </label>
-      </div>
+      </div> <br />
       <div className="pause">
         <label>
-          Pause (unbezahlt 30 Min): (wird noch hinzugefügt ... )
-          {/* <input type="checkbox" ref={pause} /> */}
+          Pause (unbezahlt 30 Min):
+          <input type="checkbox" ref={pause} />
         </label>
       </div>
 
@@ -264,3 +227,5 @@ const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
     </div>
   );
 }
+
+

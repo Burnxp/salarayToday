@@ -10,7 +10,7 @@ const hourToMin = (time) => {
 };
 
 // Berechnet die Nachtschicht-Minuten
-export function calculateNightShiftMinutes(startTime, endTime, dateString) {
+export function calculateNightShiftMinutes(startTime, endTime, dateString, nachtzeitenStart, nachtzeitenEnd) {
   let start = hourToMin(startTime);
   let end = hourToMin(endTime);
   const weekDay = getWeekday(dateString);
@@ -20,9 +20,14 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString) {
     end += 1440;
   }
 
+  // Nachtgrenzen aus Einstellungen
+  const nachtStart = hourToMin(nachtzeitenStart || "21:00");
+  const nachtEnd = hourToMin(nachtzeitenEnd || "05:00");
+
+  // Nacht geht über Mitternacht
   const nightPeriods = [
-    { start: 1260, end: 1440 }, // 21:00–24:00
-    { start: 0, end: 300 },     // 0:00–5:00
+    { start: nachtStart, end: 1440 },
+    { start: 0, end: nachtEnd },
   ];
 
   let nightMinutes = 0;

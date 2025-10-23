@@ -1,0 +1,48 @@
+import { useState, useEffect } from "react";
+
+export function useZuschlaege() {
+  // Initialisiere Zustände mit Werten aus dem lokalen Speicher oder Standardwerten
+  const [sonntagszuschlag, setSonntagszuschlag] = useState(() => localStorage.getItem("Sonntagszuschlag") || "");
+  const [feiertagszuschlag, setFeiertagszuschlag] = useState(() => localStorage.getItem("Feiertagszuschlag") || "");
+  const [nachtzuschlag, setNachtzuschlag] = useState(() => localStorage.getItem("Nachtzuschlag") || "");
+  const [feinplanzuschlag, setFeinplanzuschlag] = useState(() => localStorage.getItem("Feinplanzuschlag") || "");
+  
+  
+   // 🔥 neue Zustände für Nachtzeiten
+  const [nachtzeitenStart, setNachtzeitenStart] = useState(localStorage.getItem("nachtzeitenStart") || "22:00");
+  const [nachtzeitenEnd, setNachtzeitenEnd] = useState(localStorage.getItem("nachtzeitenEnd") || "06:00");
+
+  // Synchronisiere Änderungen mit dem lokalen Speicher
+  useEffect(() => {
+    localStorage.setItem("Sonntagszuschlag", sonntagszuschlag);
+  }, [sonntagszuschlag]);
+
+  useEffect(() => {
+    localStorage.setItem("Feiertagszuschlag", feiertagszuschlag);
+  }, [feiertagszuschlag]);
+
+  useEffect(() => {
+    localStorage.setItem("Nachtzuschlag", nachtzuschlag);
+  }, [nachtzuschlag]);
+
+  useEffect(() => {
+    localStorage.setItem("Feinplanzuschlag", feinplanzuschlag);
+  }, [feinplanzuschlag]);
+    useEffect(() => { localStorage.setItem("nachtzeitenStart", nachtzeitenStart); }, [nachtzeitenStart]);
+    useEffect(() => { localStorage.setItem("nachtzeitenEnd", nachtzeitenEnd); }, [nachtzeitenEnd]);
+
+  return {
+    sonntagszuschlag,
+    setSonntagszuschlag,
+    feiertagszuschlag,
+    setFeiertagszuschlag,
+    nachtzuschlag,
+    setNachtzuschlag,
+    feinplanzuschlag,
+    setFeinplanzuschlag,
+    nachtzeitenStart,
+    nachtzeitenEnd,
+    setNachtzeitenStart,
+    setNachtzeitenEnd,
+  };
+}
