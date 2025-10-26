@@ -17,7 +17,7 @@ body {
   
   background: linear-gradient(135deg, #2b2c2b3d, #0f311752); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
-  
+  min-height: 70vh;
   
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   

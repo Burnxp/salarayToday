@@ -103,7 +103,8 @@ const berechneLohn = () => {
             sonntagsStd *
             parseFloat(stdLohn || 0) *
             (parseFloat(sonntagszuschlag || 0) / 100);
-            
+            console.log("Sonntagszuschlag für Stunden vor Mitternacht:", sonntagsZuschlag);
+
         }
 
         // komplette Stunden am Sonntag
@@ -113,13 +114,13 @@ const berechneLohn = () => {
             arbeitszeitStunden *
             parseFloat(stdLohn || 0) *
             (parseFloat(sonntagszuschlag || 0) / 100);
-          console.log("Sonntagszuschlag:", sonntagszuschlag);
+          sonntagsStd = arbeitszeitStunden;
         }
         gesamtLohn += sonntagsZuschlag;
       
       
     
-    sonntagsStd = arbeitszeitStunden;
+    
     console.log('Sonntag Zuschlag:', sonntagsZuschlag);
   }
   if (weekday(inputValue) === "Samstag") {
@@ -157,9 +158,10 @@ const berechneLohn = () => {
 
   // Pause abziehen
   if (pause.current?.checked) {
+    
     // 30 Minuten Pause abziehen
     const abzug = 0.5; // 30 min
-    console.log('arbeitszeitStunden vor Pause:', arbeitszeitStunden, arbeitsZeitLohn);
+    console.log('arbeitszeitStunden vor Pause:', arbeitszeitStunden, arbeitsZeitLohn, nachtstunden, sonntagsStd, feiertagsStd);
     arbeitszeitStunden -=  abzug;
     arbeitsZeitLohn = arbeitszeitStunden * parseFloat(stdLohn || 0);
     

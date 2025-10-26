@@ -34,6 +34,7 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
 
   // Wochentag prüfen
   if (weekDay !== 6 && weekDay !== 0) {
+    console.log("Normaler Werktag");
     // Normaler Werktag
     for (let i = start; i < end; i++) {
       const timeOfDay = i % 1440;
@@ -44,8 +45,10 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
         }
       }
     }
-  } else if (weekDay === 6) {
+  } 
+  if (weekDay === 6) {
   // Samstag -> nur bis Mitternacht ODER bis Schichtende, je nachdem was früher kommt
+  console.log("Samstag");
   const endLimit = Math.min(end, 1440);
   for (let i = start; i < endLimit; i++) {
     const timeOfDay = i % 1440;
@@ -56,7 +59,9 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
       }
     }
   }
-} else if (weekDay === 0) {
+} 
+if (weekDay === 0) {
+  console.log("Sonntag");
     // Sonntag -> Nachtschicht beginnt Montag 0 Uhr
     const loopStart = Math.max(start, 1440);
     for (let i = loopStart; i < end; i++) {
@@ -67,7 +72,7 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
           break;
         }
       }
-    }
+    } console.log("Night Minutes Sonntag:", nightMinutes);
   }
 
   return nightMinutes / 60; // Stunden zurückgeben
