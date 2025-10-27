@@ -15,26 +15,29 @@ export function NavigationsBar(){
     return (
     
     <nav className="footer-nav">
-  <Link to="/">
+      <div className='link'>
+    <Link to="/" >
     <img src={euroImg} alt="Lohnrechner" />
     <span>Lohnrechner</span>
   </Link>
 
-  <Link to="/einstellungen">
+  <Link to="/einstellungen" >
     <img src={settingImg} alt="Einstellungen" />
     <span>Einstellungen</span>
-  </Link> <br/>
+  </Link> 
+      </div>
+
   
   <br/>
-
+      
   <Link to="/impressum" className="impressum-link">
     <span className='smal imDa'>Impressum</span>
   </Link>
   <Link to="/datenschutz" className="datenschutz-link">
     <span className='smal imDa'>Datenschutz</span>
-  </Link>
-
-  <div className="smal">App Version: {packageJson.version}</div> 
+  </Link><br/>
+<span className='smal' >Version: {packageJson.version}</span> 
+  
   
 </nav>
 

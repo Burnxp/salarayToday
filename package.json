@@ -12,6 +12,7 @@
     "deploy:xampp": "npx copyfiles -u 1 dist/**/* C:/xampp/htdocs/Salary_Day"
   },
   "dependencies": {
+    "helmet": "^8.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.4"

@@ -1,7 +1,8 @@
 import { StdLohn } from "./stdLohn";
 import { useZuschlaege } from "./hooks/useZuschlaege";
 import { Zuschlag } from './zuschlagsVariablen';
-import { useState } from "react";
+import { use, useState } from "react";
+import { useEffect } from "react";
 
 
 export function EinstellungenPage() {
@@ -22,6 +23,10 @@ export function EinstellungenPage() {
   } = useZuschlaege();
 
   return (
+    useEffect(() => {
+      document.title = "Einstellungen - SalaryDay";
+    }, []),
+
     <>
       <h2>Einstellungen</h2>
     <StdLohn stdLohn={stdLohn} setStdLohn={setStdLohn} />
@@ -63,7 +68,7 @@ export function EinstellungenPage() {
           />
         </p>
       </div>
-
+    <h6>Zahlt die Firma einen Zuschlag, wenn sich der Arbeitsplan innerhalb eines bestimmten Zeitraums ändert? </h6>
       <Zuschlag
         name="Feinplanzuschlag"
         wert={feinplanzuschlag}

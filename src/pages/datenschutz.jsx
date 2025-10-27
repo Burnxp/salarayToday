@@ -1,6 +1,15 @@
+import { useEffect } from "react";
+
 export default function Datenschutz() {
+  useEffect(() => {
+    document.title = "Datenschutzerklärung - SalaryDay";
+  }, []);
   return (
-    <div className="datenSchutz" >
+
+<div className="datenSchutz" >
+    
+
+    
       <h1>Datenschutzerklärung</h1>
 
       <p>
@@ -8,10 +17,10 @@ export default function Datenschutz() {
       </p>
 
       <div>
-        <p><strong>Bernd Schaller</strong></p>
+        <p><strong>BS-WebDev</strong></p>
 
         <p>Deutschland</p>
-        <p>E-Mail: <a href="mailto:berndschaller@gmx.net" >Berndschaller@gmx.net</a></p>
+        <p>E-Mail: <a href="mailto:kontakt@bs-webdev.de" >kontakt@bs-webdev.de</a></p>
       </div>
 
       <h2>1. Allgemeines</h2>

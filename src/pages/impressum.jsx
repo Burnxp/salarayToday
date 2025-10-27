@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 export default function Impressum() {
+  useEffect(() => {
+    document.title = "Impressum - SalaryDay";
+  }, []);
+
   return (
     <div>
       <h1>Impressum</h1>
@@ -8,14 +14,14 @@ export default function Impressum() {
       </p>
 
       <div >
-        <p><strong>Bernd Schaller</strong></p>
+        <p><strong>BS-WebDev</strong></p>
         <p>Deutschland</p>
       </div>
 
       <div >
         <>
           <strong>Kontakt:</strong><br />
-          E-Mail: <a href="mailto:berndschaller@gmx.net" >Berndschaller@gmx.net</a>
+          E-Mail: <a href="mailto:kontakt@bs-webdev.de" >kontakt@bs-webdev.de</a>
         </>
       </div>
 

@@ -5,7 +5,7 @@ export function useZuschlaege() {
   const [sonntagszuschlag, setSonntagszuschlag] = useState(() => localStorage.getItem("Sonntagszuschlag") || "");
   const [feiertagszuschlag, setFeiertagszuschlag] = useState(() => localStorage.getItem("Feiertagszuschlag") || "");
   const [nachtzuschlag, setNachtzuschlag] = useState(() => localStorage.getItem("Nachtzuschlag") || "");
-  const [feinplanzuschlag, setFeinplanzuschlag] = useState(() => localStorage.getItem("Feinplanzuschlag") || "");
+  const [feinplanzuschlag, setFeinplanzuschlag] = useState(() => localStorage.getItem("Feinplanzuschlag") || "0");
   const [stdLohn, setStdLohn] = useState(() => localStorage.getItem("stdLohn") || "10");
   
    // 🔥 neue Zustände für Nachtzeiten

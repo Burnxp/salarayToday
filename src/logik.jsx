@@ -4,6 +4,7 @@ import { useFeiertage } from "./feierTage";
 import { ResultView } from "./result";
 import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 import { useZuschlaege } from "./hooks/useZuschlaege";
+import { useEffect } from "react";
 
 
 
@@ -199,6 +200,9 @@ let gesamtZuschlaege = 0;
 
 
   return (
+    useEffect(() => {
+      document.title = "Lohnrechner - SalaryDay";
+    }, []),
     <div>
       <p>Schicht:</p>
       {["frueh", "spaet", "nacht"].map((s) => (
@@ -214,7 +218,7 @@ let gesamtZuschlaege = 0;
         </label>
       ))}
 
-      <div className="feinplanzuschlag">
+      <div className={`feinplanzuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
         <label>
           Feinplanzuschlag{" "}
           <span className="smal">(Komplett oder &frac12;)</span>: <br />
@@ -251,7 +255,7 @@ let gesamtZuschlaege = 0;
           <input type="date" value={inputValue} onChange={dateHandleChange} />
         </p>
 
-        <p>
+        <p className="workTime">
           <input
             type="time"
             value={startTime}

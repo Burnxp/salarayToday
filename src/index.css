@@ -17,16 +17,16 @@ body {
   
   background: linear-gradient(135deg, #2b2c2b3d, #0f311752); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
-  min-height: 70vh;
+  min-height: calc(100vh - 10rem);
   
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.692);
   
 }
 
 .ueberschrift {
   color: #333;
   font-family: 'Playfair Display', 'Lucida Sans', 'Lucida Grande', sans-serif;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.411);
   margin-bottom: 1rem;
 }
 
@@ -99,7 +99,7 @@ button:active {
 }
 
 .workTime {
-  text-align: left;
+  text-align: center;
 }
 
 .workTime input {
@@ -115,9 +115,10 @@ button:active {
   width: 100%;
 }
 
-.feinplanzuschlag p {
+.feinplanzuschlag {
+  padding: 0.5rem;
   font-size: 1.5rem;
-  color: #555;
+  
 }
 
 /* Footer Navigation */
@@ -129,16 +130,19 @@ button:active {
   background-color: #3a5733; /* dunkleres Grün */
   color: white;
   text-align: center;
-  padding: 0.5rem 0 0.2rem 0;
+  padding: 0.3rem 0 0.7rem 0;
   
 }
+
+
 
 .footer-nav a {
   color: #ffffff;
   text-decoration: none;
+  
   margin: 0 1rem;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.2s ease;
+  
 }
 
 .footer-nav a:hover {
@@ -173,7 +177,7 @@ button:active {
     .smal {
       font-size: 0.8rem;
       color: #747373;
-      
+      margin: 0.2rem;
     }
 
 
@@ -203,3 +207,27 @@ button:active {
       margin-bottom: 0.8rem;
       line-height: 1.6;
     }
+
+    @media screen and (min-width: 600px) {
+      #app{
+        width: 50vw;
+        margin: 0 auto;
+        margin-bottom: 7rem;
+      }
+    }
+
+
+
+
+    .hidden {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  
+}
+
+.visible {
+  opacity: 1;
+  height: auto;
+  
+}
