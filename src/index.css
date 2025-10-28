@@ -3,6 +3,15 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('fonts/great-vibes-v19-latin_latin-ext-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* sorgt dafür, dass Text sofort sichtbar ist */
+}
+
+
 body {
   text-align: center;
   margin: 1rem;
@@ -25,7 +34,8 @@ body {
 
 .ueberschrift {
   color: #333;
-  font-family: 'Playfair Display', 'Lucida Sans', 'Lucida Grande', sans-serif;
+  font-family: 'Great Vibes', cursive; /* dekorative Schriftart */
+  font-size: 3.5rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.411);
   margin-bottom: 1rem;
 }
@@ -61,20 +71,22 @@ button:active {
 }
 
 #stdLohn {
-  width: 1.2rem;
+  
   text-align: center;
 }
 
 .result {
-  margin-top: 1rem;
+  margin-top: 2rem;
   
 }
 .result p {
-  font-size: 0.8rem;
+  color: #444;
+  font-size: .9rem;
+  font-weight: bold;
   background-color: #d8d8d8a4;
   width: 100%;            /* maximal innerhalb des Containers */
   max-width: 400px;       /* optional, für große Bildschirme */
-  margin: 0.2 auto;    /* zentriert + Abstand */
+  
   border-radius: 0.3rem;
   padding: 0.5rem;
   box-sizing: border-box; /* Padding wird zur Breite dazu gerechnet */
@@ -92,9 +104,7 @@ button:active {
 .flexItem {
   flex: 1 1;
   margin: 0.1rem;
-  padding: 0.1rem;
-  border-radius: 0.2rem;
-  background-color: #f7fff8;
+ 
   box-shadow: inset 0 1px 1px rgb(152, 153, 152);
 }
 
@@ -230,4 +240,31 @@ button:active {
   opacity: 1;
   height: auto;
   
+}
+
+hr{
+  margin: 1rem 0;
+  
+  border-top: 1px solid #ccc;
+}
+
+/* ************************************************************************* */
+.zuschlaegeAendernButton {
+  size: 0.8rem;
+  
+  background: rgb(156, 185, 132);
+}
+
+.zuschlag  {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.inputZuschlag {
+  width: 4rem;
+  text-align: center;
+  background: rgb(156, 185, 132);
 }

@@ -204,6 +204,7 @@ let gesamtZuschlaege = 0;
       document.title = "Lohnrechner - SalaryDay";
     }, []),
     <div>
+      <hr />
       <p>Schicht:</p>
       {["frueh", "spaet", "nacht"].map((s) => (
         <label key={s}>
@@ -239,8 +240,9 @@ let gesamtZuschlaege = 0;
     setFeinPlanHalfChecked(e.target.checked);
     if (e.target.checked) setFeinPlanChecked(false);
   }}
-/>
-        </label>
+  
+/> 
+        </label> 
       </div> <br />
       <div className="pause">
         <label>
@@ -271,7 +273,7 @@ let gesamtZuschlaege = 0;
 
         <button onClick={berechneLohn}>Berechnen</button>
       </div>
-
+<hr />
       <ResultView result={result} />
     </div>
   );

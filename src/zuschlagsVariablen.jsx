@@ -3,7 +3,7 @@ import { useState } from "react";
 export function Zuschlag({ name, wert, setWert }) {
   const [saved, setSaved] = useState(wert !== "");
   
-  const einheit = name.toLowerCase().includes("feinplanzuschlag") ? " €" : " %";
+  const einheit = name.toLowerCase().includes("feinplanz") ? " €" : " %";
  
 
   function wertSpeichern() {
@@ -20,22 +20,23 @@ export function Zuschlag({ name, wert, setWert }) {
   return (
     <div className="input">
       <p className="zuschlag">
-        {saved ? (
-          <>
+        {saved ? (<>
+          
             {name}: <span className="zuschlagStyle">{wert} {einheit}</span>{" "}
-            <button onClick={wertAendern}>{name} ändern</button>
+            <button className="zuschlaegeAendernButton" onClick={wertAendern}>bearbeiten</button>
           </>
         ) : (
           <>
-            <label htmlFor={name}>{name} {einheit}</label>
+            <label htmlFor={name}>{name} </label>
             <input
+              
               type="number"
               id={name}
-              className="inputfeld"
+              className="inputZuschlag"
               value={wert}
               onChange={(e) => setWert(e.target.value)}
-            />
-            <button onClick={wertSpeichern}>Speichern</button>
+            />{einheit}
+            <button className="zuschlaegeAendernButton" onClick={wertSpeichern}>Speichern</button>
           </>
         )}
       </p>

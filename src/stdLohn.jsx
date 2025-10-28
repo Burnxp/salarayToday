@@ -22,25 +22,25 @@ export function StdLohn({ stdLohn, setStdLohn }){
             <>
           <div className="input">
 
-    <p className="stdLohn">
+    <p className="zuschlag">
         { saved ? ( 
             <>
-                Stundenlohn: <span>{stdLohn} €</span>{" "}
-                <button onClick={stdLohnAendern}>Std Lohn ändern</button>
+                Std. Lohn: <span>{stdLohn} €</span>{" "}
+                <button className="zuschlaegeAendernButton" onClick={stdLohnAendern}>Std Lohn ändern</button>
             </>
 
 
         ) : (
             <>
-            <label htmlFor="stdLohn">Stundenlohn (Brutto)</label>
+            <label htmlFor="stdLohn">Stundenlohn (Brutto)</label> <br/>
             <input 
             type="number" 
             id="stdLohn" 
-            className="inputfeld"
-            
+            className="inputZuschlag"
+            placeholder="€"
             value= {stdLohn} 
-            onChange= {(e) => setStdLohn(e.target.value)}/>
-            <button onClick={wertSpeichern}>Speichern</button>
+            onChange= {(e) => setStdLohn(e.target.value)}/> 
+            <button className="zuschlaegeAendernButton" onClick={wertSpeichern}>Speichern</button>
             </>
         )}
       

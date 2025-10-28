@@ -1,7 +1,7 @@
 import { StdLohn } from "./stdLohn";
 import { useZuschlaege } from "./hooks/useZuschlaege";
 import { Zuschlag } from './zuschlagsVariablen';
-import { use, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 
 
@@ -28,22 +28,26 @@ export function EinstellungenPage() {
     }, []),
 
     <>
-      <h2>Einstellungen</h2>
+      <h2 >Einstellungen</h2>
+      <hr />
     <StdLohn stdLohn={stdLohn} setStdLohn={setStdLohn} />
+    <hr />
+    <h3>Zuschläge</h3>
+
       <Zuschlag
-        name="Sonntagszuschlag"
+        name="Sonntag"
         wert={sonntagszuschlag}
         setWert={setSonntagszuschlag}
       />
 
       <Zuschlag
-        name="Feiertagszuschlag"
+        name="Feiertag"
         wert={feiertagszuschlag}
         setWert={setFeiertagszuschlag}
       />
 
       <Zuschlag
-        name="Nachtzuschlag"
+        name="Nachtzu."
         wert={nachtzuschlag}
         setWert={setNachtzuschlag}
       />
@@ -51,26 +55,30 @@ export function EinstellungenPage() {
 
       {/* Neue Eingaben für Nachtzeiten */}
       <div className="input">
-        <p className="zuschlag">
+        <p >
           Nachtschichtzeiten:
           <br />
           Start:
           <input
             type="time"
             value={nachtzeitenStart}
+            className="zuschlaegeAendernButton"
             onChange={(e) => setNachtzeitenStart(e.target.value)}
           />
           &nbsp; Ende:
           <input
             type="time"
+            className="zuschlaegeAendernButton"
             value={nachtzeitenEnd}
             onChange={(e) => setNachtzeitenEnd(e.target.value)}
           />
         </p>
       </div>
+
     <h6>Zahlt die Firma einen Zuschlag, wenn sich der Arbeitsplan innerhalb eines bestimmten Zeitraums ändert? </h6>
+
       <Zuschlag
-        name="Feinplanzuschlag"
+        name="Feinplanz."
         wert={feinplanzuschlag}
         setWert={setFeinplanzuschlag}
       />

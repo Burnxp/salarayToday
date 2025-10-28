@@ -6,23 +6,24 @@ export function ResultView({ result }) {
   return (
      (
         <div className="result flexbox">
-          <p className="flexItem">Arbeitszeit Lohn: {result.arbeitsZeitLohn} €</p>
-          <p className="flexItem">Arbeitszeit: {result.arbeitszeit} Stunden</p>
+         
+          <p className="flexItem">Arbeitszeit: <br /> {result.arbeitszeit} Stunden</p>
+           <p className="flexItem">Arbeitszeit Lohn: <br /> {result.arbeitsZeitLohn} €</p>
           <p className="flexItem">
-            Nachtzuschlag: {result.nachtZuschlag || 0} €
+            Nachtzuschlag: <br /> {result.nachtZuschlag || 0} €
           </p>
           <p className="flexItem">
-            Sonntagszuschlag: {result.sonntagsZuschlag || 0} €
+            Sonntagszuschlag: <br /> {result.sonntagsZuschlag || 0} €
           </p>
           <p className="flexItem">
-            Feiertagszuschlag: {result.feierTagZuschlag || 0} €
+            Feiertagszuschlag: <br /> {result.feierTagZuschlag || 0} €
           </p>
 
           <p className="flexItem">
-            Lohn mit Zuschlägen: {result.gesamtLohn || 0} €
+            Lohn mit Zuschlägen: <br /> {result.gesamtLohn || 0} €
           </p>
           <p className="flexItem">
-            Zuschläge - Gesamt: {result.gesamtZuschlaege || 0} €
+            Zuschläge - Gesamt: <br /> {result.gesamtZuschlaege || 0} €
           </p>
         </div>
       )
