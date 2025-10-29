@@ -162,7 +162,7 @@ const berechneLohn = () => {
 
   }
 
-  if (morgenIstFeiertag) {
+  if (morgenIstFeiertag && endTime < startTime) {
     const minNachMitternacht = end; // Minuten nach Mitternacht
           feiertagsZuschlag =
             (minNachMitternacht / 60) *
