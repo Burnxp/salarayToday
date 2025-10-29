@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 export function useZuschlaege() {
   // Initialisiere Zustände mit Werten aus dem lokalen Speicher oder Standardwerten
-  const [sonntagszuschlag, setSonntagszuschlag] = useState(() => localStorage.getItem("Sonntagszuschlag") || "");
-  const [feiertagszuschlag, setFeiertagszuschlag] = useState(() => localStorage.getItem("Feiertagszuschlag") || "");
-  const [nachtzuschlag, setNachtzuschlag] = useState(() => localStorage.getItem("Nachtzuschlag") || "");
+  const [sonntagszuschlag, setSonntagszuschlag] = useState(() => localStorage.getItem("Sonntagszuschlag") || "100");
+  const [feiertagszuschlag, setFeiertagszuschlag] = useState(() => localStorage.getItem("Feiertagszuschlag") || "100");
+  const [nachtzuschlag, setNachtzuschlag] = useState(() => localStorage.getItem("Nachtzuschlag") || "25");
   const [feinplanzuschlag, setFeinplanzuschlag] = useState(() => localStorage.getItem("Feinplanzuschlag") || "0");
   const [stdLohn, setStdLohn] = useState(() => localStorage.getItem("stdLohn") || "10");
   

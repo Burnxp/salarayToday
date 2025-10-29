@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  
 }
 
 @font-face {
@@ -14,20 +15,21 @@
 
 body {
   text-align: center;
-  margin: 1rem;
+  margin: 0.5rem;
   background-color: #ffffffcc; /* leicht transparentes Weiß */
   font-family: 'Inter', sans-serif; /* Fließtext */
+  
 
 }
 
 #app {
-  padding: 0.5rem 0.5rem 0.5rem;
-  margin-bottom: 7rem; /* Platz für die Footer-Navigation */
-  
+  padding: 0.2rem 0.2rem 0.2rem;
+  margin-bottom: 7.2rem; /* Platz für die Footer-Navigation */
+
   background: linear-gradient(135deg, #2b2c2b3d, #0f311752); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
-  min-height: calc(100vh - 10rem);
-  
+  min-height: calc(100dvh - 8.5rem);
+  max-height: fit-content;
   box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.692);
   
 }
@@ -37,7 +39,7 @@ body {
   font-family: 'Great Vibes', cursive; /* dekorative Schriftart */
   font-size: 3.5rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.411);
-  margin-bottom: 1rem;
+  margin-top: 1.2rem;
 }
 
 p {
@@ -76,7 +78,7 @@ button:active {
 }
 
 .result {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   
 }
 .result p {
@@ -149,15 +151,16 @@ button:active {
 .footer-nav a {
   color: #ffffff;
   text-decoration: none;
-  
-  margin: 0 1rem;
+  padding: 1rem 1rem;
+  margin: 1rem;
   font-weight: 500;
   
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover, img:hover {
   color: #a29bfe;
-  transform: translateY(-2px);
+  
+  transform: translateY(-5px);
 }
 
 
@@ -272,8 +275,8 @@ hr{
 
 .feedbackButton{
   position: absolute;
-  top: .2rem;
-  right: .2rem;
+  top: .3rem;
+  right: .3rem;
   font-size: 0.8rem;
   font-weight: bold;
   background: linear-gradient(rgb(207, 198, 198),rgb(99, 99, 184));

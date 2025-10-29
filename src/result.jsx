@@ -7,7 +7,7 @@ export function ResultView({ result }) {
      (
         <div className="result flexbox">
          
-          <p className="flexItem">Arbeitszeit: <br /> {result.arbeitszeit} Stunden</p>
+          <p className="flexItem">Arbeitszeit: <br /> {result.arbeitszeit} Std</p>
            <p className="flexItem">Arbeitszeit Lohn: <br /> {result.arbeitsZeitLohn} €</p>
           <p className="flexItem">
             Nachtzuschlag: <br /> {result.nachtZuschlag || 0} €

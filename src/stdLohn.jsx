@@ -26,7 +26,7 @@ export function StdLohn({ stdLohn, setStdLohn }){
         { saved ? ( 
             <>
                 Std. Lohn: <span>{stdLohn} €</span>{" "}
-                <button className="zuschlaegeAendernButton" onClick={stdLohnAendern}>Std Lohn ändern</button>
+                <button className="zuschlaegeAendernButton" onClick={stdLohnAendern}>bearbeiten</button>
             </>
 
 
@@ -34,6 +34,7 @@ export function StdLohn({ stdLohn, setStdLohn }){
             <>
             <label htmlFor="stdLohn">Stundenlohn (Brutto)</label> <br/>
             <input 
+            autoFocus
             type="number" 
             id="stdLohn" 
             className="inputZuschlag"

@@ -42,6 +42,11 @@ export function Rechner({stdLohn}) {
   } = useZuschlaege();
   const today = new Date().toISOString().split("T")[0];
   const feiertage = useFeiertage(new Date().getFullYear());
+
+
+
+
+ 
   // States
   const [inputValue, setInputValue] = useState(today);
   const [schicht, setSchicht] = useState("frueh");
@@ -60,6 +65,7 @@ const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
     spaet: { start: "13:30", ende: "21:45" },
     nacht: { start: "21:30", ende: "05:45" },
   };
+
 
   // Handlers
   const dateHandleChange = (e) => {
@@ -139,17 +145,40 @@ const berechneLohn = () => {
           sonntagsStd = minNachMitternacht / 60;
         }
       }
+  
 
   if (feiertage.includes(inputValue)) {
     feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
     feiertagsStd = arbeitszeitStunden;
+  }
+    const morgenFeiertag = new Date(inputValue);
+    morgenFeiertag.setDate(morgenFeiertag.getDate() + 1);
+    const morgenFeiertagStr = morgenFeiertag.toISOString().split('T')[0];
+    console.log('Morgen Feiertag:', morgenFeiertagStr);
+    const morgenIstFeiertag = feiertage.includes(morgenFeiertagStr);
+    console.log('Morgen ist Feiertag:', morgenIstFeiertag);
+  if (feiertage.includes(morgenFeiertagStr)) {
+    console.log('Morgen ist ein Feiertag!');
+
+  }
+
+  if (morgenIstFeiertag) {
+    const minNachMitternacht = end; // Minuten nach Mitternacht
+          feiertagsZuschlag =
+            (minNachMitternacht / 60) *
+            parseFloat(stdLohn || 0) *
+            (parseFloat(feiertagszuschlag || 0) / 100); // Zuschlag nur für Stunden nach Mitternacht
+          console.log("Feiertagszuschlag:", feiertagsZuschlag, end);
+          feiertagsStd = minNachMitternacht / 60;
+          gesamtLohn += feiertagsZuschlag;
+          
   }
  
 
   gesamtLohn += sonntagsZuschlag + feiertagsZuschlag;
 
   let nachtstunden = calculateNightShiftMinutes(
-    startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd
+    startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd, morgenIstFeiertag === true
   );
   let nachtZuschlag = nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100);
   gesamtLohn += nachtZuschlag;
@@ -219,7 +248,7 @@ let gesamtZuschlaege = 0;
         </label>
       ))}
 
-      <div className={`feinplanzuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
+      <p className={`feinplanzuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
         <label>
           Feinplanzuschlag{" "}
           <span className="smal">(Komplett oder &frac12;)</span>: <br />
@@ -243,7 +272,7 @@ let gesamtZuschlaege = 0;
   
 /> 
         </label> 
-      </div> <br />
+      </p> <br />
       <div className="pause">
         <label>
           Pause (unbezahlt 30 Min):

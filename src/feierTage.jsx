@@ -17,6 +17,8 @@ export function useFeiertage(year) {
         console.log(tage)
         
         setFeiertage(tage); // ["2025-01-01", "2025-01-06", ...]
+         
+
       } catch (err) {
         console.error("Feiertage laden fehlgeschlagen", err);
       }

@@ -10,7 +10,7 @@ const hourToMin = (time) => {
 };
 
 // Berechnet die Nachtschicht-Minuten
-export function calculateNightShiftMinutes(startTime, endTime, dateString, nachtzeitenStart, nachtzeitenEnd) {
+export function calculateNightShiftMinutes(startTime, endTime, dateString, nachtzeitenStart, nachtzeitenEnd, feiertagMorgen) {
   let start = hourToMin(startTime);
   let end = hourToMin(endTime);
   const weekDay = getWeekday(dateString);
@@ -31,7 +31,18 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
   ];
 
   let nightMinutes = 0;
-
+if (feiertagMorgen) {
+  const endLimit = Math.min(end, 1440);
+  for (let i = start; i < endLimit; i++) {
+    const timeOfDay = i % 1440;
+    for (const period of nightPeriods) {
+      if (timeOfDay >= period.start && timeOfDay < period.end) {
+        nightMinutes++;
+        break;
+      }
+    }
+  }
+} else {
   // Wochentag prüfen
   if (weekDay !== 6 && weekDay !== 0) {
     console.log("Normaler Werktag");
@@ -74,6 +85,7 @@ if (weekDay === 0) {
       }
     } console.log("Night Minutes Sonntag:", nightMinutes);
   }
-
+}
   return nightMinutes / 60; // Stunden zurückgeben
+
 }

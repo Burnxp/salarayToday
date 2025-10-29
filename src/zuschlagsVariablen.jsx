@@ -29,7 +29,7 @@ export function Zuschlag({ name, wert, setWert }) {
           <>
             <label htmlFor={name}>{name} </label>
             <input
-              
+              autoFocus
               type="number"
               id={name}
               className="inputZuschlag"
