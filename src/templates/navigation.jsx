@@ -1,11 +1,11 @@
 /* import homeImg from './assets/img/home.svg'; */
-import euroImg from './assets/img/euro.svg';
+import euroImg from '../assets/img/euro.svg';
 /* import profilImg from './assets/img/profil.svg'; */
-import settingImg from './assets/img/setting.svg';
+import settingImg from '../assets/img/setting.svg';
 
 import { Link } from 'react-router-dom';
 
-import packageJson from '../package.json'
+
 
 
 
@@ -36,7 +36,7 @@ export function NavigationsBar(){
   <Link to="/datenschutz" className="datenschutz-link">
     <span className='smal imDa'>Datenschutz</span>
   </Link><br/>
-<span className='smal' >Version: {packageJson.version}</span> 
+<span className='smal' >&copy; {new Date().getFullYear()} - Alle Rechte vorbehalten </span>
   
   
 </nav>

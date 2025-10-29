@@ -5,7 +5,7 @@ import { Rechner } from './logik';
 import { EinstellungenPage } from './einstellungen';
 import { useZuschlaege } from "./hooks/useZuschlaege";
 
-import {NavigationsBar} from './navigation';
+import {NavigationsBar} from './templates/navigation';
 import { useState } from "react";
 
 import Impressum from './pages/impressum';
