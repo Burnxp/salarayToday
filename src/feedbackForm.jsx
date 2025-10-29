@@ -23,7 +23,7 @@ export default function FeedbackForm({ onClose }) {
         </button>
         <h2>Feedback senden</h2>
         <form name="feedback" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="feedback" />
+          
 
 
 
