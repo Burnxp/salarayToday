@@ -122,7 +122,7 @@ button:active {
 }
 
 .workTime button {
-  width: 100%;
+  width: 50%;
 }
 
 .feinplanzuschlag {
@@ -267,4 +267,14 @@ hr{
   width: 4rem;
   text-align: center;
   background: rgb(156, 185, 132);
+}
+
+
+.feedbackButton{
+  position: absolute;
+  top: .2rem;
+  right: .2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background: linear-gradient(rgb(207, 198, 198),rgb(99, 99, 184));
 }

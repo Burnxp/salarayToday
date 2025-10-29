@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Rechner } from './logik';
 import { EinstellungenPage } from './einstellungen';
+import  FeedbackForm  from './feedbackForm';
 import { useZuschlaege } from "./hooks/useZuschlaege";
 
 import {NavigationsBar} from './templates/navigation';
@@ -31,6 +32,7 @@ function LohnrechnerPage() {
     stdLohn
   } = useZuschlaege();
     const [pause] = useState(localStorage.getItem("Pause") || "");
+ 
   
   return (
     <>
@@ -48,10 +50,18 @@ function LohnrechnerPage() {
   );
 }
 
-export function Title(){
-    return <h1 
-    className='ueberschrift'>
-    Lohnrechner</h1>
+export function Title() {
+  const [showForm, setShowForm] = useState(false);
+
+  return (
+    <>
+      <h1 className="ueberschrift">Lohnrechner</h1>
+
+      <button className='feedbackButton' onClick={() => setShowForm(true)}>Feedback geben</button>
+
+      {showForm && <FeedbackForm onClose={() => setShowForm(false)} />}
+    </>
+  );
 }
 
 

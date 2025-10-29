@@ -8,6 +8,7 @@
 
     <!-- <link rel="stylesheet" href="src/standart-reset.css"> -->
     <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="feedbackForm.css">
 
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -30,7 +31,12 @@
   </head>
   <body>
     <div id="app"></div>
-    
+<form name="feedback" data-netlify="true" hidden>
+  <input type="text" name="name" />
+  <textarea name="message"></textarea>
+</form>
+
+
     <script type="module" src="src/index.jsx"></script>
   </body>
 </html>
