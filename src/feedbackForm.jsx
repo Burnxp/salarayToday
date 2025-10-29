@@ -1,4 +1,4 @@
-import "./FeedbackForm.css"; // unser eigenes CSS
+import "./feedbackform.css";
 
 export default function FeedbackForm({ onClose }) {
   const handleSubmit = async (e) => {
