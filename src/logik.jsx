@@ -148,8 +148,18 @@ const berechneLohn = () => {
   
 
   if (feiertage.includes(inputValue)) {
-    feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
+    if (endTime < startTime){
+      // schicht geht aus den Feiertag raus
+      feiertagsStd = (1440 - start) / 60;
+      console.log(feiertagsStd)
+      feiertagsZuschlag = feiertagsStd * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
+      
+    }
+    if (startTime < endTime) {
+          feiertagsZuschlag = arbeitszeitStunden * parseFloat(stdLohn || 0) * (parseFloat(feiertagszuschlag || 0)/100);
     feiertagsStd = arbeitszeitStunden;
+    }
+
   }
     const morgenFeiertag = new Date(inputValue);
     morgenFeiertag.setDate(morgenFeiertag.getDate() + 1);
@@ -180,6 +190,11 @@ const berechneLohn = () => {
   let nachtstunden = calculateNightShiftMinutes(
     startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd, morgenIstFeiertag === true
   );
+    if (feiertage.includes(inputValue) && weekday(inputValue) === 'Samstag'){
+      // Es ist Feiertag und morgen ist Sonntag deshalb werden keine Nachtschichten gezahlt
+      console.log('Es ist: ' + feiertage.includes(inputValue) + ' Samstag')
+      nachtstunden = 0;
+  }
   let nachtZuschlag = nachtstunden * parseFloat(stdLohn || 0) * (parseFloat(nachtzuschlag || 0)/100);
   gesamtLohn += nachtZuschlag;
 
