@@ -32,8 +32,9 @@ export function StdLohn({ stdLohn, setStdLohn }){
 
         ) : (
             <>
-            <label htmlFor="stdLohn">Stundenlohn (Brutto)</label> <br/>
-            <input 
+            <label className="zuschlaegeAendernLabel" htmlFor="stdLohn">Std. Lohn:</label> 
+            <span>
+                <input 
             autoFocus
             type="number" 
             id="stdLohn" 
@@ -41,6 +42,7 @@ export function StdLohn({ stdLohn, setStdLohn }){
             placeholder="€"
             value= {stdLohn} 
             onChange= {(e) => setStdLohn(e.target.value)}/> 
+            </span>
             <button className="zuschlaegeAendernButton" onClick={wertSpeichern}>Speichern</button>
             </>
         )}

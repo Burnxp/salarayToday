@@ -27,15 +27,17 @@ export function Zuschlag({ name, wert, setWert }) {
           </>
         ) : (
           <>
-            <label htmlFor={name}>{name} </label>
-            <input
+            <label htmlFor={name} className="zuschlaegeAendernLabel">{name} </label>
+            <span ><input
               autoFocus
               type="number"
               id={name}
               className="inputZuschlag"
+              placeholder={einheit}
               value={wert}
               onChange={(e) => setWert(e.target.value)}
-            />{einheit}
+              required
+            /></span>
             <button className="zuschlaegeAendernButton" onClick={wertSpeichern}>Speichern</button>
           </>
         )}

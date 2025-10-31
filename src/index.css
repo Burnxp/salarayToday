@@ -176,7 +176,9 @@ button:active {
   
   font-size: 1.4rem;
   color: #333;
-  margin-top: 0.3rem;}
+  margin-top: 0.3rem;
+  
+}
 
   input{
     background-color: #f0f0ff;
@@ -226,6 +228,7 @@ button:active {
         width: 50vw;
         margin: 0 auto;
         margin-bottom: 7rem;
+        padding: 1rem;
       }
     }
 
