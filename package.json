@@ -12,10 +12,12 @@
     "deploy:xampp": "npx copyfiles -u 1 dist/**/* C:/xampp/htdocs/Salary_Day"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.16",
     "helmet": "^8.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.4"
+    "react-router-dom": "^7.9.4",
+    "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
