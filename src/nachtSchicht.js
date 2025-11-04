@@ -57,6 +57,7 @@ if (feiertagMorgen) {
       }
     }
   } 
+  // ist es Samstag?
   if (weekDay === 6) {
   // Samstag -> nur bis Mitternacht ODER bis Schichtende, je nachdem was früher kommt
   console.log("Samstag");
@@ -71,6 +72,7 @@ if (feiertagMorgen) {
     }
   }
 } 
+  // ist es Sonntag?
 if (weekDay === 0) {
   console.log("Sonntag");
     // Sonntag -> Nachtschicht beginnt Montag 0 Uhr
