@@ -29,13 +29,14 @@ export function NavigationsBar(){
 
   
   <br/>
-      
+  <div className='impDa'>
   <Link to="/impressum" className="impressum-link">
     <span className='smal imDa'>Impressum</span>
   </Link>
   <Link to="/datenschutz" className="datenschutz-link">
     <span className='smal imDa'>Datenschutz</span>
-  </Link><br/>
+  </Link>
+  </div><br/>
 <span className='smal' >&copy; {new Date().getFullYear()} - Alle Rechte vorbehalten </span>
   
   

@@ -26,7 +26,7 @@ body {
   padding: 0.2rem 0.2rem 0.2rem;
   margin-bottom: 7.2rem; /* Platz für die Footer-Navigation */
 
-  background: linear-gradient(135deg, #2b2c2b3d, #0f311752); /* helles, modernes Grau statt grün */
+  background: linear-gradient(135deg, #2b2c2b3d, #2b2a2b00); /* helles, modernes Grau statt grün */
   border-radius: 1rem;
   min-height: calc(100dvh - 8.5rem);
   max-height: fit-content;
@@ -53,7 +53,7 @@ button, input {
   padding: 0.7rem;
   margin: 0.3rem;
   font-size: 1.1rem;
-  background: linear-gradient(135deg, #5efc038a, #0f31173d); /* moderner Farbverlauf */
+  background: linear-gradient(135deg, #37AB37, #0f31173d); /* moderner Farbverlauf */
   border: none;
   border-radius: 0.8rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -62,7 +62,7 @@ button, input {
 }
 
 button:hover {
-  background: linear-gradient(135deg, #5efc038a, #0f31173d);
+  background: linear-gradient(135deg, #37AB37, #0f31173d);
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
@@ -139,10 +139,11 @@ button:active {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #3a5733; /* dunkleres Grün */
+  
+  background-color: #3D6B3D; 
   color: white;
   text-align: center;
-  padding: 0.3rem 0 0.7rem 0;
+  padding: 0.3rem 0 0.2rem 0;
   
 }
 
@@ -151,9 +152,9 @@ button:active {
 .footer-nav a {
   color: #ffffff;
   text-decoration: none;
-  padding: 1rem 1rem;
-  margin: 1rem;
-  font-weight: 500;
+  padding: .1rem .1rem;
+  
+  
   
 }
 
@@ -192,7 +193,18 @@ button:active {
     .smal {
       font-size: 0.8rem;
       color: #747373;
-      margin: 0.2rem;
+      margin:0 0.2rem;
+    }
+
+    div .link {
+      margin-bottom: -1rem;
+    }
+
+    div .impDa {
+      display: flex;
+      justify-content: space-around;
+      margin: 0 2rem;
+      margin-bottom: -1rem;
     }
 
 
@@ -222,15 +234,27 @@ button:active {
       margin-bottom: 0.8rem;
       line-height: 1.6;
     }
-
+    /* MEDIA SCREEEN */
     @media screen and (min-width: 600px) {
       #app{
         width: 50vw;
         margin: 0 auto;
         margin-bottom: 7rem;
         padding: 1rem;
+        border-radius: 0;
+      }
+      .footer-nav{
+        width: 54vw;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: 0.2rem;
       }
     }
+
+    
+
+    /* ******************************************************************************* */
 
 
 
