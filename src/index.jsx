@@ -2,10 +2,10 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Rechner } from './logik';
-import { EinstellungenPage } from './einstellungen';
+import { EinstellungenPage } from './pages/einstellungen';
 import  FeedbackForm  from './feedbackForm';
 import { useZuschlaege } from "./hooks/useZuschlaege";
-
+import { ImpressumDatens } from './templates/impressumDatens';
 import {NavigationsBar} from './templates/navigation';
 import { useState } from "react";
 
@@ -71,17 +71,26 @@ export function Title() {
 const root = createRoot(document.getElementById('app'));
 
 root.render(
-  
-    <BrowserRouter>
+  <>
+  <BrowserRouter>
+  <div className="appView">
+        
     <Title />
     
     <Routes>
       
       <Route path="/" element={<LohnrechnerPage />} />
-      <Route path="/einstellungen" element={<EinstellungenPage />} />
+      <Route path="/einstellungen" element={<><EinstellungenPage /> </>} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />      
     </Routes>
+    
     <NavigationsBar />
-  </BrowserRouter>
-)
+    
+  
+  </div>
+< ImpressumDatens />
+</BrowserRouter>
+</>
+);
+

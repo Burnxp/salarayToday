@@ -21,7 +21,7 @@ body {
   font-family: "Inter", sans-serif; /* Fließtext */
 }
 
-#app {
+.appView {
   padding: 0.2rem 0.2rem 0.2rem;
   margin-bottom: 7.2rem; /* Platz für die Footer-Navigation */
 
@@ -146,13 +146,16 @@ button:active {
   background-color: #3d6b3d;
   color: white;
   text-align: center;
-  padding: 0.3rem 0 0.2rem 0;
+  padding: 1rem;
 }
 
 .footer-nav a {
   color: #ffffff;
   text-decoration: none;
+  margin: 0 0.5rem;
   padding: 0.1rem 0.1rem;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
 }
 
 .footer-nav a:hover,
@@ -194,9 +197,11 @@ div .link {
 
 div .impDa {
   display: flex;
+  
   justify-content: space-around;
-  margin: 0 2rem;
-  margin-bottom: -1rem;
+  margin: 0 ;
+  margin-top: -7rem;
+  
 }
 
 .inputfeld {
@@ -235,7 +240,7 @@ div .impDa {
 }
 /* MEDIA SCREEEN */
 @media screen and (min-width: 700px) {
-  #app {
+  .appView {
     width: 50vw;
     margin: 0 auto;
     margin-bottom: 5rem;
@@ -248,7 +253,7 @@ div .impDa {
     margin: 0 auto;
     left: 50%;
     transform: translateX(-50%);
-    padding-bottom: 0.2rem;
+    padding: 0.2rem;
   }
 
   .feedbackButton {
