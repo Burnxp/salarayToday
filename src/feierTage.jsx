@@ -13,11 +13,16 @@ export function useFeiertage(year) {
         
         // data ist ein Objekt mit Feiertagen → wir holen nur die Datumswerte
         const tage = Object.values(data).map(f => f.datum); 
-        tage.splice(9,1); // Himmelfahrt ist in Bayreuth kein Feiertag deshalb wird er hier entfernt wird
+
+        // Himmelfahrt ist in Bayreuth kein Feiertag deshalb wird er hier entfernt wird
+        tage.splice(9,1); 
+        
+        // Neujahr year + 1 hinzufügen
+        tage.push(`${year + 1}-01-01`); 
         console.log(tage)
         
         setFeiertage(tage); // ["2025-01-01", "2025-01-06", ...]
-         
+        console.log("Feiertage geladen", tage);
 
       } catch (err) {
         console.error("Feiertage laden fehlgeschlagen", err);
