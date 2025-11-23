@@ -41,10 +41,7 @@ export function Rechner({stdLohn}) {
     nachtzeitenEnd
   } = useZuschlaege();
   const today = new Date().toISOString().split("T")[0];
-  const feiertage = useFeiertage(new Date().getFullYear());
-
-
-
+  
 
  
   // States
@@ -54,8 +51,11 @@ export function Rechner({stdLohn}) {
   const [endTime, setEndTime] = useState("13:45");
   const [result, setResult] = useState(null);
 
-const [feinPlanChecked, setFeinPlanChecked] = useState(false);
-const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
+  // Feiertage laden für das Jahr des ausgewählten Datums
+  const feiertage = useFeiertage(inputValue ? new Date(inputValue).getFullYear() : new Date().getFullYear());
+
+  const [feinPlanChecked, setFeinPlanChecked] = useState(false);
+  const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
 
   const pause = useRef(null);
   // const pause = useRef(null); // Wird noch hinzugefügt
@@ -146,8 +146,8 @@ const berechneLohn = () => {
         }
       }
   
-
-  if (feiertage.includes(inputValue)) {
+   // Prüfen ob der Tag ein Feiertag ist
+    if (feiertage.includes(inputValue)) {
     if (endTime < startTime){
       // schicht geht aus den Feiertag raus
       feiertagsStd = (1440 - start) / 60;
@@ -160,18 +160,18 @@ const berechneLohn = () => {
     feiertagsStd = arbeitszeitStunden;
     }
 
-  }
+      }
+
+
+
+    // Prüfen ob morgen ein Feiertag ist
     const morgenFeiertag = new Date(inputValue);
     morgenFeiertag.setDate(morgenFeiertag.getDate() + 1);
     const morgenFeiertagStr = morgenFeiertag.toISOString().split('T')[0];
     console.log('Morgen Feiertag:', morgenFeiertagStr);
     const morgenIstFeiertag = feiertage.includes(morgenFeiertagStr);
     console.log('Morgen ist Feiertag:', morgenIstFeiertag);
-  if (feiertage.includes(morgenFeiertagStr)) {
-    console.log('Morgen ist ein Feiertag!');
-
-  }
-
+// Wenn morgen ein Feiertag ist und die Schicht über Mitternacht geht
   if (morgenIstFeiertag && endTime < startTime) {
     const minNachMitternacht = end; // Minuten nach Mitternacht
           feiertagsZuschlag =
