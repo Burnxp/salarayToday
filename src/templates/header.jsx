@@ -1,10 +1,11 @@
 import LRLogo from '../assets/lohnrechner-logo.svg';
 import FeedbackForm from '../feedbackForm';
 import { useState } from 'react';
-import { href, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function Header() {
   const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   return (
   <header>
@@ -36,13 +37,12 @@ export function Header() {
           {showForm && <FeedbackForm onClose={() => setShowForm(false)} />}
         </div>
         <div className="container10">
-          <button
-            className="hilfeButton button-design"
-            onClick={() => window.location.href='/hilfe'}
-          >
-                 
-            ?
-          </button>
+           <button
+      className="hilfeButton button-design"
+      onClick={() => navigate("/hilfe")}
+    >
+      ?
+    </button>
         </div>
       </div>
     </div>

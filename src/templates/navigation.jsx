@@ -1,16 +1,14 @@
-export function NavigationsBar(){
-    return (
-    
+import { Link } from "react-router-dom";
+
+export function NavigationsBar() {
+  return (
     <nav className="navigation">
-  <a className="navigation-link lohnrechnerSeite" href="/">
-    Lohnrechner
-  </a>
-  <a className="navigation-link einstellungenSeite" href="einstellungen">
-    Einstellungen
-  </a>
-</nav>
-
-
-    
-    )
+      <Link className="navigation-link lohnrechnerSeite" to="/">
+        Lohnrechner
+      </Link>
+      <Link className="navigation-link einstellungenSeite" to="/einstellungen">
+        Einstellungen
+      </Link>
+    </nav>
+  );
 }
