@@ -38,7 +38,7 @@
 .app-screen {
   background-color: var(--hintergrund-hell);
   height: calc(100% - 7.5rem);
-  margin-top: 3.8rem;
+  margin-top: 3.0rem;
   overflow: hidden;
   margin-bottom: -7.3rem;
   
@@ -647,7 +647,7 @@ box-shadow: 5px 10px 20px 5px rgba(11, 51, 9, 0.66) inset, 4px 6px 8px 0 rgba(0,
   grid-template-rows: auto auto auto;      /* 3 Reihen */
   row-gap: 0.3125rem;
 column-gap: 5px;
-  height: 11.75rem;
+  height: fit-content;
 padding: 0.625rem .3125rem 2.3125rem 0.3125rem;
 }
 
