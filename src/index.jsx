@@ -17,8 +17,8 @@ import { Hilfe } from './pages/hilfe';
 
 
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+
 
 import Impressum from './pages/impressum';
 import Datenschutz from './pages/datenschutz';
@@ -43,7 +43,7 @@ function LohnrechnerPage() {
     stdLohn
   } = useZuschlaege();
     const [pause] = useState(localStorage.getItem("Pause") || "");
- 
+
   
   return (
     
@@ -64,9 +64,7 @@ function LohnrechnerPage() {
   );
 }
 
-
-
-
+ 
 
 
 const root = createRoot(document.getElementById('app'));

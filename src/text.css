@@ -28,6 +28,7 @@
 
     
     .text{
+        margin-top: var(--content-offset);
         overflow-y: auto;
         max-height: 100%;
         background-color: var(--hintergrund-hell);

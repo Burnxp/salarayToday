@@ -3,6 +3,10 @@
   --Color-Marker: #1e5128;
   --Color-1: #3a6b35;
   --normal-text: "Source Sans Pro", sans-serif;
+
+  --header-height: 8.75rem;
+  --header-height-smal: 4.25rem;
+  --content-offset: var(--header-height); /* wird überschrieben */
 }
 
 * {
@@ -48,13 +52,35 @@ header {
 .grid {
   display: grid;
   width: 100%;
-  height: 8.75rem;
+  height: var(--header-height);
   padding: 0 0.4375rem;
   row-gap: 0.625rem;
   column-gap: 10px;
   grid-template-rows: repeat(1, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  transition: height 0.9s ease-in-out; /* für das Schrumpfen nötig */
 }
+/* ON_SCROLL */
+.grid-smal{
+  height: var(--header-height-smal);
+  transition: height 0.3s ease;
+}
+
+.grid-smal .container1{
+  display: block;
+  height: 4rem;
+  margin-top: 0.5rem;
+}
+.grid-smal .container2 {
+  display: none;
+}
+.grid-smal .container1 img {
+  height: 3rem;
+  width: auto;
+}
+
+
 
 .container1 {
   display: flex;
@@ -100,7 +126,7 @@ header {
 .hilfeButton {
   width: 3.125rem;
   height: 1.85688rem;
-
+  
   justify-content: flex-end;
 }
 
@@ -211,7 +237,7 @@ header {
 .lohnrechner-layout {
   width: 24.375rem;
   margin: auto;
-  margin-top: 5rem;
+  margin-top: calc(var(--content-offset));
   padding-bottom: 25rem;
   display: flex;
   flex-direction: column;
@@ -252,7 +278,7 @@ header {
   display: grid;
   width: 22.5rem;
   height: 8.875rem;
-  row-gap: 0.32125rem;
+  row-gap: 0.38125rem;
   grid-template-rows: repeat(3, minmax(0, 1fr));
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding-right: 0.5rem;
@@ -287,10 +313,7 @@ header {
   grid-row: 2 / span 1;
   grid-column: 3 / span 2;
 
-  border-radius: 0.625rem;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 5px 2px var(--Color-1, #366633) inset;
+  height: 2.5rem;
 
   color: var(--Color-1, #366633);
   -webkit-text-stroke-width: 1px;
@@ -681,7 +704,7 @@ padding: 0.625rem 0.3125rem 0.3125rem 0.3125rem;
   
   margin: 0 auto;
   width: 24.375rem;
-  margin-top: 5rem;
+  margin-top: var(--content-offset);
   
   flex-direction: column;
   align-items: flex-start;

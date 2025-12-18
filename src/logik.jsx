@@ -245,11 +245,15 @@ let gesamtZuschlaege = 0;
   });
 };
 
+useEffect(() => {
+  document.title = "SalaryDay - Lohnrechner";
+}, []);
+
+
 
   return (
-    useEffect(() => {
-      document.title = "SalaryDay - Lohnrechner";
-    }, []),
+
+
 /* Schicht-Container */
     <div className="lohnrechner-layout">
       
@@ -289,7 +293,7 @@ let gesamtZuschlaege = 0;
         <h2 className="arbeitszeit-ueberschrift">Arbeitszeit</h2>
         <span className="datum-text">Datum:</span>
         <input type="date" 
-        className="arbeitsDatum" 
+        className="arbeitsDatum button-design" 
         value={inputValue} 
         onChange={dateHandleChange} 
         />
