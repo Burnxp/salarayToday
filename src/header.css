@@ -241,7 +241,7 @@ header {
   padding-bottom: 25rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: fit-content;
   align-items: center;
   overflow-y: auto; /* scrollt nur, wenn Inhalt zu groß */
   max-height: 100%; /* maximal so groß wie der Viewport */
