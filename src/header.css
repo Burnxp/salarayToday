@@ -648,7 +648,7 @@ box-shadow: 5px 10px 20px 5px rgba(11, 51, 9, 0.66) inset, 4px 6px 8px 0 rgba(0,
   row-gap: 0.3125rem;
 column-gap: 5px;
   height: 11.75rem;
-padding: 0.625rem 0.3125rem 0.3125rem 0.3125rem;
+padding: 0.625rem .3125rem 2.3125rem 0.3125rem;
 }
 
 .box {
