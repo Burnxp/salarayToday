@@ -48,7 +48,7 @@ header {
 .grid {
   display: grid;
   width: 100%;
-  height: 11.25rem;
+  height: 8.75rem;
   padding: 0 0.4375rem;
   row-gap: 0.625rem;
   column-gap: 10px;
