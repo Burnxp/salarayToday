@@ -33,8 +33,8 @@
 
 .app-screen {
   background-color: var(--hintergrund-hell);
-  height: calc(100% - 10rem);
-  margin-top: 5.8rem;
+  height: calc(100% - 7.5rem);
+  margin-top: 3.8rem;
   overflow: hidden;
   margin-bottom: -7.3rem;
   
