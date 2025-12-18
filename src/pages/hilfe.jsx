@@ -94,7 +94,7 @@
       <strong>Hinweis:</strong>
       <br />
       Wenn dir Fehler bei Berechnungen, Zeiten oder Zuschlägen auffallen, melde
-      dich jederzeit über den Feedback-Button. Jede Rückmeldung hilft, das Tool
+      dich jederzeit über den Feedback-Button. Jede Rückmeldung hilft, die Anwendung weiter
       zu verbessern.
     </p>
   </section>

@@ -37,10 +37,10 @@
 
 .app-screen {
   background-color: var(--hintergrund-hell);
-  height: calc(100% - 7.5rem);
-  margin-top: 3.0rem;
+  height: calc(100% - 4rem);
+  
   overflow: hidden;
-  margin-bottom: -7.3rem;
+  
   
 }
 header {
@@ -64,7 +64,7 @@ header {
 /* ON_SCROLL */
 .grid-smal{
   height: var(--header-height-smal);
-  transition: height 0.3s ease;
+  transition: height 0.3s ease-in-out;
 }
 
 .grid-smal .container1{
@@ -236,12 +236,12 @@ header {
 /* Lohnrechner - Rechner: */
 .lohnrechner-layout {
   width: 24.375rem;
-  margin: auto;
+  margin: 0 auto;
   margin-top: calc(var(--content-offset));
-  padding-bottom: 25rem;
+  padding-bottom: 30rem;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  min-height: 80%;
   align-items: center;
   overflow-y: auto; /* scrollt nur, wenn Inhalt zu groß */
   max-height: 100%; /* maximal so groß wie der Viewport */

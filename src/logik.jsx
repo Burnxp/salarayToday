@@ -469,9 +469,7 @@ useEffect(() => {
         <button className="berechnen-button" onClick={berechneLohn}>Berechnen</button>
       </div>
     <ResultView result={result} />
-
-
-      </div>
+ </div>
 
         {/* <!-- Feedback Form --> */}
 <form name="feedback" data-netlify="true" hidden>

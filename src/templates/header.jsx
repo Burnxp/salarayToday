@@ -25,13 +25,13 @@ export function Header() {
         headerGrid.classList.add("grid-smal");
               document.documentElement.style.setProperty(
         "--content-offset",
-        "0.25rem"
+        "4rem"
       );
       } else {
         headerGrid.classList.remove("grid-smal");
         document.documentElement.style.setProperty(
         "--content-offset",
-        "6.75rem"
+        "7.75rem"
         );
       }
     };
