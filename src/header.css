@@ -33,7 +33,7 @@
 
 .app-screen {
   background-color: var(--hintergrund-hell);
-  height: calc(100% - 11.25rem);
+  height: calc(100% - 10rem);
   margin-top: 5.8rem;
   overflow: hidden;
   margin-bottom: -7.3rem;
@@ -209,23 +209,25 @@ header {
 /* __________________________________________________________________________ */
 /* Lohnrechner - Rechner: */
 .lohnrechner-layout {
-  display: grid;
-  margin: auto;
   width: 24.375rem;
-  height: 52.75rem;
+  margin: auto;
   margin-top: 5rem;
-  margin-bottom: -11rem;
-  grid-template-rows: repeat(10, minmax(0, 1fr));
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  padding-bottom: 25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  overflow-y: auto; /* scrollt nur, wenn Inhalt zu groß */
+  max-height: 100%; /* maximal so groß wie der Viewport */
+  
 }
 
 /* Schicht */
 
-.schicht-container{
-  margin: 0 auto;
-}
+
 
 .schicht-grid {
+
   display: grid;
   width: 24.375rem;
   height: 6.3125rem;
@@ -628,7 +630,7 @@ padding: 0.625rem 0.3125rem 0.3125rem 0.3125rem;
 
 .box {
   border-radius:1rem;
-  padding:0.3rem ;
+  padding:0.1rem ;
 }
 
 

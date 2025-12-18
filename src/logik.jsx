@@ -252,7 +252,7 @@ let gesamtZuschlaege = 0;
     }, []),
 /* Schicht-Container */
     <div className="lohnrechner-layout">
-      <div className="schicht-container">
+      
       <div className="schicht-grid">
       <h2 className="schicht-text">Schicht</h2>
       
@@ -280,7 +280,7 @@ let gesamtZuschlaege = 0;
 </div>
 
 
-      </div>
+      
       </div>
 {/* Worktime */}
 <div className="arbeitszeit">
