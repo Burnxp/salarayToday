@@ -1,3 +1,12 @@
+:root{
+    --hintergrund-hell: #BCE6B9;
+    --Color-Marker: #1E5128;
+    --Color-1: #3A6B35;
+    --normal-text: "Source Sans Pro", sans-serif;
+    
+    } 
+
+
 /* Overlay, halbtransparent */
 .modal-overlay {
   position: fixed;
@@ -5,22 +14,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.849);
+  background-color: rgba(0, 0, 0, 0.849); /* abgeschwächtes Schwarz */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: +9999;
+  
+
 }
 
 /* Modal-Box */
 .modal-content {
-  background-color: #fff;
+  background-color: var(--hintergrund-hell);
   padding: 20px;
   border-radius: 12px;
   width: 80%;
   max-width: 400px;
   position: relative;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  color: var(--Color-Marker);
+  font-family: var(--normal-text);
   
 }
 
@@ -33,7 +46,7 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: black;
+  color: var(--Color-Marker);
   box-shadow: none;
 }
 
@@ -51,19 +64,23 @@
 
 .modal-content textarea {
   display: flex;
+  background-color: var(--hintergrund-hell);
+  font-family: var(--normal-text);
+  color: var(--Color-Marker);
   width: 80%;
   min-height: 5rem;
   margin: 0 auto;
   padding: 8px;
   margin-top: 4px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--Color-1);
   box-sizing: border-box;
+  box-shadow: inset 0 0px 2px var(--Color-1);
 }
 
 .modal-content button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--Color-1);
+  color: var(--hintergrund-hell);
   padding: 10px;
   border: none;
   border-radius: 6px;
@@ -72,5 +89,7 @@
 }
 
 .modal-content button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: var(--Color-Marker);
 }
+
+

@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export function Zuschlag({ name, wert, setWert }) {
+  // entweder wert oder ein leeres feld
   const [saved, setSaved] = useState(wert !== "");
-  
-  const einheit = name.toLowerCase().includes("feinplanz") ? " €" : " %";
+  const wrapperRef = useRef(null)
+  const inputRef = useRef(null);
+  const euroEinheit = ['std. Lohn', 'tageszuschlag'];
+
+const lower = name.toLowerCase();
+
+const einheit =
+  lower.includes("std. lohn") || lower.includes("tageszuschlag")
+    ? " €"
+    : " %";
+
  
 
   function wertSpeichern() {
@@ -12,36 +22,70 @@ export function Zuschlag({ name, wert, setWert }) {
     setSaved(true);
   }
 
-  function wertAendern() {
-    setSaved(false);
-    setWert("");
-  }
+    // ➜ Wenn Edit-Modus aktiv wird → Input automatisch markieren
+  useEffect(() => {
+    if (!saved && inputRef.current) {
+      // Timeout ist wichtig, sonst ist der Fokus manchmal zu früh
+      setTimeout(() => {
+        inputRef.current.select();
+      }, 0);
+    }
+  }, [saved]);
+
+  // ➜ Click-Outside zum Schließen
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (!saved && wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        wertSpeichern();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [saved, wert]);
+
 
   return (
-    <div className="input">
-      <p className="zuschlag">
-        {saved ? (<>
+    <div className="input" ref={wrapperRef}>
+      
+        {saved ? (
+        
+          <p className="zuschlag" onClick={()=> setSaved(false)}>
+            <span className='zuschlagsGrund'>{name}:</span>
+            <span className="button-design zuschlagSize">{wert} {einheit}</span>{" "}
+          </p>
+          ):(
+            <form
+            className="zuschlag "
+            onSubmit={(e) =>{
+              e.preventDefault();
+              wertSpeichern();
+            }}
           
-            {name}: <span className="zuschlagStyle">{wert} {einheit}</span>{" "}
-            <button className="zuschlaegeAendernButton" onClick={wertAendern}>bearbeiten</button>
-          </>
-        ) : (
-          <>
-            <label htmlFor={name} className="zuschlaegeAendernLabel">{name} </label>
-            <span ><input
+          >
+        
+            <label htmlFor={name} className="zuschlagsGrund">{name}: </label>
+            
+              <input
+              
+              ref={inputRef}
               autoFocus
               type="number"
               id={name}
-              className="inputZuschlag"
+              className="button-design zuschlagSize input-form "
               placeholder={einheit}
               value={wert}
               onChange={(e) => setWert(e.target.value)}
               required
-            /></span>
-            <button className="zuschlaegeAendernButton" onClick={wertSpeichern}>Speichern</button>
-          </>
+            />
+            </form>
         )}
-      </p>
-    </div>
+      </div>
+    
   );
 }

@@ -2,11 +2,11 @@ import { useEffect } from "react";
 
 export default function Impressum() {
   useEffect(() => {
-    document.title = "Impressum - SalaryDay";
+    document.title = "Lohnrechner - Impressum";
   }, []);
 
   return (
-    <div>
+    <div className="text">
       <h1>Impressum</h1>
 
       <p>

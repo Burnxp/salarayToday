@@ -1,6 +1,22 @@
+import { useEffect } from "react";
+
 import "./feedbackform.css";
+import "./header.css";
+import "./text.css";
+
 
 export default function FeedbackForm({ onClose }) {
+  
+  useEffect(() => {
+
+    // Beim Öffnen des Formulars die Elemente ausblenden
+    hiddenElements();
+    return () => {
+      // Beim Schließen des Formulars die Elemente wieder einblenden
+      displayElements();
+    };
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,3 +61,26 @@ export default function FeedbackForm({ onClose }) {
     </div>
   );
 }
+
+
+
+function hiddenElements() {
+  document
+    .querySelector('.lohnrechner-layout')
+    ?.classList.add('hidden');
+
+  document
+    .querySelector('.text, .einstellungen-layout')
+    ?.classList.add('hidden');
+}
+
+function displayElements() {
+  document
+    .querySelector('.lohnrechner-layout')
+    ?.classList.remove('hidden');
+
+  document
+    .querySelector('.text, .einstellungen-layout')
+    ?.classList.remove('hidden');
+}
+

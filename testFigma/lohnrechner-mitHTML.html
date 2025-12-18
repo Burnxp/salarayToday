@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleFigma.css">
+</head>
+<body id="body">
+    <div class="lohnRechnerLogo"><img src="public/images/lohnrechner-logo.svg" alt="lohnrechner-logo"></div>
+    <div class="link impressum-link"><a href="impressum.html">Impressum</a></div>
+    <div class="link datenschutz-link"><a href="datenschutz.html">Datenschutz</a></div>
+
+    <button class="hilfe-button">Hilfe</button>
+
+    <div class="schicht"><h4>Schicht:</h4>
+    <div class="schicht-button">
+        <button class="frueh" onclick="schichtSelect('.frueh')">Früh</button>
+        <button class="spaet" onclick="schichtSelect('.spaet')">Spät</button>
+        <button class="nacht" onclick="schichtSelect('.nacht')">Nacht</button>
+    </div></div>
+
+    <div class="pause-div">
+        <h4>Pause:  </h4>
+        <span>(unbezahlt 30min)</span></div>
+<label class="pause-checkbox">
+    <input type="checkbox">
+
+    <!-- dein Checkbox-SVG -->
+    <svg class="checkbox-unchecked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="1" y="1" width="18" height="18" fill="#BCE6B9" stroke="#0B3309" stroke-width="2"/>
+    </svg>
+
+    <!-- dein Haken-SVG -->
+    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+        <path d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623" stroke="#0B3309" stroke-width="3"/>
+    </svg>
+</label>
+
+
+<div class="tageszuschlag"><h4 class="text">Tageszuschlag:</h4>
+<!-- Tageszuschlag 1 -->
+    <label class="tageszuschlag-checkbox"><span class="text">1</span>
+    <input type="checkbox">
+
+    <!-- dein Checkbox-SVG -->
+    <svg class="checkboxTageszuschlag-unchecked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="1" y="1" width="18" height="18" fill="#BCE6B9" stroke="#0B3309" stroke-width="2"/>
+    </svg>
+
+    <!-- dein Haken-SVG -->
+    <svg class="checkTageszuschlag" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+        <path d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623" stroke="#0B3309" stroke-width="3"/>
+    </svg>
+</label>
+
+
+<!-- Tageszuschlag 1/2 -->
+
+ <label class="tageszuschlagHalf-checkbox"><span class="text">&frac12;</span>
+    <input type="checkbox">
+
+    <!-- dein Checkbox-SVG -->
+    <svg class="checkboxTageszuschlagHalf-unchecked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="1" y="1" width="18" height="18" fill="#BCE6B9" stroke="#0B3309" stroke-width="2"/>
+    </svg>
+
+    <!-- dein Haken-SVG -->
+    <svg class="checkTageszuschlagHalf" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+        <path d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623" stroke="#0B3309" stroke-width="3"/>
+    </svg>
+</label>
+</div>
+<div class="arbeitszeit-datum-zeit">
+    <h4 class="arbeitszeit">Arbeitszeit:</h4>
+    
+    <h5 class="datum">Datum:</h5>
+    <input class="workDate" type="date" value="2025-11-20" >
+    <h5 class="zeit">Zeit:</h5> 
+    <div>
+        <input class="workTimeFrom" type="time" value="07:00">
+        <span class="bis-text">bis</span>
+        <input class="workTimeTo" type="time" value="15:30">
+    </div>
+</div>
+    <button class="berechnen-button">Berechnen</button>
+    
+<div class="ergebnisse">
+<div data-layer="Ergebnisse" class="Ergebnisse" style="width: 340px; height: 170px; position: relative">
+  <div data-layer="Arbeitszeit Std" class="ArbeitszeitStd" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 37px; top: -1px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 15px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Arbeitszeit:</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 36px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">7,75 std</div>
+  </div>
+  <div data-layer="Arbeitslohn - Zeit" class="ArbeitslohnZeit" style="width: 144px; height: 50px; left: 196px; top: 0px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 38px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Arbeitslohn:</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 36px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">77,50 €</div>
+  </div>
+  <div data-layer="Nachtzuschlag" class="Nachtzuschlag" style="width: 109px; height: 50px; left: 0px; top: 60px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 12px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Nachtzuschlag:</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 19px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">€</div>
+  </div>
+  <div data-layer="Sonntagszuschlag" class="Sonntagszuschlag" style="width: 109px; height: 50px; left: 115px; top: 60px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 2px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Sonntagszuschlag:</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 19px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">€</div>
+  </div>
+  <div data-layer="Feiertagszuschlag" class="Feiertagszuschlag" style="width: 109px; height: 50px; left: 231px; top: 60px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 109px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 5px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Feiertagszuschlag</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 19px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">€</div>
+  </div>
+  <div data-layer="Lohn m. Zuschlägen" class="LohnMZuschlGen" style="width: 149px; height: 50px; left: 191px; top: 120px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 149px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 149px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 19px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Lohn m. Zuschlägen</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 39px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">€</div>
+  </div>
+  <div data-layer="Zu- Gesamt" class="ZuGesamt" style="width: 144px; height: 50px; left: 0px; top: 120px; position: absolute; box-shadow: 0px 0px 12px #366633 inset">
+    <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute">
+      <div data-layer="Rectangle 7" class="Rectangle7" style="width: 144px; height: 50px; left: 0px; top: 0px; position: absolute; background: var(--Hintergrund, #BCE6B9); border-radius: 10px; outline: 2px var(--Color-Marker, #0B3309) solid"></div>
+    </div>
+    <div data-layer="123 Std" class="Std" style="left: 17px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-1, #366633); font-size: 13.50px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">Zuschläge - Gesamt</div>
+    <div data-layer="€" style="width: 79px; height: 17px; left: 36px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Color-Marker, #0B3309); font-size: 20px; font-family: Source Sans Pro; font-weight: 400; word-wrap: break-word">€</div>
+  </div>
+</div>
+</div>
+<nav class="navigation">
+<a class="navigation-link lohnrechnerSeite active" href="#">Lohnrechner</a>
+<a class="navigation-link einstellungenSeite" href="#">Einstellungen</a>
+</a>
+
+</nav>
+
+
+    <script>
+    function schichtSelect(klasse) {
+        const buttons = document.querySelectorAll('.schicht-button button');
+        buttons.forEach(button => {
+            button.classList.remove('active');
+        });
+        document.querySelector(klasse).classList.add("active");
+        console.log('Schicht: ' + klasse + ' ausgewählt');
+    }
+    
+    
+    </script>
+</body>
+</html>

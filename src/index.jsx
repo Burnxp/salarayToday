@@ -3,11 +3,22 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Rechner } from './logik';
 import { EinstellungenPage } from './pages/einstellungen';
-import  FeedbackForm  from './feedbackForm';
+
+
 import { useZuschlaege } from "./hooks/useZuschlaege";
-import { ImpressumDatens } from './templates/impressumDatens';
+
+
+/* templates */
+/* import { Startapp } from './templates/startApp.jsx'; */
+import { Header } from './templates/header';
 import {NavigationsBar} from './templates/navigation';
+
+import { Hilfe } from './pages/hilfe';
+
+
+
 import { useState } from "react";
+import { useEffect } from "react";
 
 import Impressum from './pages/impressum';
 import Datenschutz from './pages/datenschutz';
@@ -35,9 +46,9 @@ function LohnrechnerPage() {
  
   
   return (
-    <>
+    
       
-      <Rechner 
+       <Rechner 
       stdLohn={stdLohn} 
       sonntagszuschlag={sonntagszuschlag} 
       feiertagszuschlag={feiertagszuschlag} 
@@ -45,24 +56,14 @@ function LohnrechnerPage() {
       feinplanzuschlag={feinplanzuschlag} 
       pause={pause}
       />
+    
+      
+     
  
-    </>
+   
   );
 }
 
-export function Title() {
-  const [showForm, setShowForm] = useState(false);
-
-  return (
-    <>
-      <h1 className="ueberschrift">Lohnrechner</h1>
-
-      <button className='feedbackButton' onClick={() => setShowForm(true)}>Feedback geben</button>
-
-      {showForm && <FeedbackForm onClose={() => setShowForm(false)} />}
-    </>
-  );
-}
 
 
 
@@ -71,26 +72,67 @@ export function Title() {
 const root = createRoot(document.getElementById('app'));
 
 root.render(
-  <>
+  <div className="app-screen">
   <BrowserRouter>
-  <div className="appView">
+  
         
-    <Title />
+    <Header />
     
     <Routes>
       
       <Route path="/" element={<LohnrechnerPage />} />
-      <Route path="/einstellungen" element={<><EinstellungenPage /> </>} />
+      <Route path="/einstellungen" element={<EinstellungenPage />} />
           <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />      
+          <Route path="/datenschutz" element={<Datenschutz />} />    
+          <Route path="/hilfe" element={<Hilfe />}   />
     </Routes>
     
     <NavigationsBar />
     
   
-  </div>
-< ImpressumDatens />
+  
+
 </BrowserRouter>
-</>
+</div>
 );
+
+// Wird NICHT zurückgesetzt, solange die Seite nicht neu geladen wird
+/* let splashAlreadyShown = false;
+
+function App() {
+  const [showStartApp, setShowStartApp] = useState(!splashAlreadyShown);
+
+  useEffect(() => {
+    if (!splashAlreadyShown) {
+      setTimeout(() => {
+        splashAlreadyShown = true;   // Merken für diese Session
+        setShowStartApp(false);      // Splashscreen ausblenden
+      }, 2000);
+    }
+  }, []);
+
+  if (showStartApp) {
+    return <Startapp />;    // Nur einmal pro Session
+  }
+
+  return (
+    
+    <BrowserRouter>
+    <Header />
+      <Routes>
+        
+        <Route path="/lohnrechner" element={<LohnrechnerPage />} />
+        <Route path="/einstellungen" element={<EinstellungenPage />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/hilfe" element={<Hilfe />} />
+      </Routes>
+      <NavigationsBar />
+    </BrowserRouter>
+    
+  );
+}
+
+root.render(<App />); */
+
 

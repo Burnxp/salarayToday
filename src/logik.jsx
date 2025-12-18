@@ -31,8 +31,9 @@ const weekday = (dateString) => {
   return days[today.getDay()];
 };
 
-export function Rechner({stdLohn}) {
+export function Rechner() {
   const {
+    stdLohn,
     sonntagszuschlag,
     feiertagszuschlag,
     nachtzuschlag,
@@ -57,8 +58,9 @@ export function Rechner({stdLohn}) {
   const [feinPlanChecked, setFeinPlanChecked] = useState(false);
   const [feinPlanHalfChecked, setFeinPlanHalfChecked] = useState(false);
 
-  const pause = useRef(null);
-  // const pause = useRef(null); // Wird noch hinzugefügt
+  const [pause, setPause] = useState(false);
+
+  
 
   const zeiten = {
     frueh: { start: "05:30", ende: "13:45" },
@@ -74,8 +76,9 @@ export function Rechner({stdLohn}) {
     weekday(value);
   };
 
-  const handleSchichtChange = (e) => {
-    const selected = e.target.value;
+  const handleSchichtChange = (selected) => {
+    
+    console.log("Ausgewählte Schicht:", selected);
     setSchicht(selected);
     if (zeiten[selected]) {
       setStartTime(zeiten[selected].start);
@@ -202,7 +205,7 @@ const berechneLohn = () => {
   gesamtLohn += feinPlanZuschlag;
 
   // Pause abziehen
-  if (pause.current?.checked) {
+  if (pause) {
     
     // 30 Minuten Pause abziehen
     const abzug = 0.5; // 30 min
@@ -245,24 +248,236 @@ let gesamtZuschlaege = 0;
 
   return (
     useEffect(() => {
-      document.title = "Lohnrechner - SalaryDay";
+      document.title = "SalaryDay - Lohnrechner";
     }, []),
-    <div>
-      <hr />
-      <p>Schicht:</p>
-      {["frueh", "spaet", "nacht"].map((s) => (
-        <label key={s}>
-          <input
-            type="radio"
-            name="schicht"
-            value={s}
-            checked={schicht === s}
-            onChange={handleSchichtChange}
-          />
-          {s.charAt(0).toUpperCase() + s.slice(1)}
-        </label>
-      ))}
+/* Schicht-Container */
+    <div className="lohnrechner-layout">
+      <div className="schicht-container">
+      <div className="schicht-grid">
+      <h2 className="schicht-text">Schicht</h2>
+      
+<div className="schicht-button-container">
+  <button
+    onClick={() => handleSchichtChange('frueh')}
+    className={`schicht-button ${schicht === 'frueh' ? 'aktiv' : ''}`}
+  >
+    Früh
+  </button>
 
+  <button
+    onClick={() => handleSchichtChange('spaet')}
+    className={`schicht-button ${schicht === 'spaet' ? 'aktiv' : ''}`}
+  >
+    Spät
+  </button>
+
+  <button
+    onClick={() => handleSchichtChange('nacht')}
+    className={`schicht-button ${schicht === 'nacht' ? 'aktiv' : ''}`}
+  >
+    Nacht
+  </button>
+</div>
+
+
+      </div>
+      </div>
+{/* Worktime */}
+<div className="arbeitszeit">
+    <div className="arbeitszeit-container">
+      
+        <h2 className="arbeitszeit-ueberschrift">Arbeitszeit</h2>
+        <span className="datum-text">Datum:</span>
+        <input type="date" 
+        className="arbeitsDatum" 
+        value={inputValue} 
+        onChange={dateHandleChange} 
+        />
+        <span className="arbeitszeit-text">Zeit:</span>
+        <input 
+        type="time" 
+        className="time-von button-design"
+        value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+          />{" "} 
+
+        <span 
+        className="bis-text">bis</span>
+
+        <input 
+        type="time" 
+        className="time-bis button-design"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+        />
+</div>
+    <div className="pause-tageszuschlag">
+      <div className="pause-container">
+        
+          <div className="pause-flex">
+                  <label htmlFor="" className="pause-text" >Pause <span className="smal-text">(unbezahlt 30min)</span></label>
+        
+   <label className="pause-checkbox">
+    <input 
+    type="checkbox" 
+    checked={pause} 
+    onChange={(e) => setPause(e.target.checked)}/>
+    {/* dein Checkbox-SVG */}
+    <svg
+      className="checkbox-unchecked"
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <rect
+        x={1}
+        y={1}
+        width={18}
+        height={18}
+        fill="#BCE6B9"
+        stroke="#0B3309"
+        strokeWidth={2}
+      />
+    </svg>
+    {/* dein Haken-SVG */}
+    <svg
+      className="check"
+      xmlns="http://www.w3.org/2000/svg"
+      width={17}
+      height={29}
+      viewBox="0 0 17 16"
+      fill="none"
+    >
+      <path
+        d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623"
+        stroke="#0B3309"
+        strokeWidth={3}
+      />
+    </svg>
+  </label>
+      </div>
+        </div>
+
+    <div className={`tageszuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
+      <label className="tageszuschlag-label">Tageszuschlag:</label>
+    
+    <span className="tageszuschlag-wert">1</span>
+    <div className="checkbox-tageszuschlag">
+    <label className="pause-checkbox">
+    <input type="checkbox" 
+    checked={feinPlanChecked}
+    onChange={(e) => {
+      setFeinPlanChecked(e.target.checked);
+      if (e.target.checked) setFeinPlanHalfChecked(false);
+    }}
+    />
+    {/* dein Checkbox-SVG */}
+    <svg
+      className="checkbox-unchecked"
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <rect
+        x={1}
+        y={1}
+        width={18}
+        height={18}
+        fill="#BCE6B9"
+        stroke="#0B3309"
+        strokeWidth={2}
+      />
+    </svg>
+    {/* dein Haken-SVG */}
+    <svg
+      className="check"
+      xmlns="http://www.w3.org/2000/svg"
+      width={17}
+      height={16}
+      viewBox="0 0 17 16"
+      fill="none"
+    >
+      <path
+        d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623"
+        stroke="#0B3309"
+        strokeWidth={3}
+      />
+    </svg>
+  </label>
+    </div>
+
+
+    <span className="tageszuschlag-wert2">&frac12;</span>
+    <div className="checkbox-tageszuschlag2">
+    <label className="checkbox-tageszuschlag2">
+    <input type="checkbox" 
+    checked={feinPlanHalfChecked}
+    onChange={(e) => {
+      setFeinPlanHalfChecked(e.target.checked);
+      if (e.target.checked) setFeinPlanChecked(false);
+    }}
+    />
+    {/* dein Checkbox-SVG */}
+    <svg
+      className="checkbox-unchecked"
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <rect
+        x={1}
+        y={1}
+        width={18}
+        height={18}
+        fill="#BCE6B9"
+        stroke="#0B3309"
+        strokeWidth={2}
+      />
+    </svg>
+    {/* dein Haken-SVG */}
+    <svg
+      className="check"
+      xmlns="http://www.w3.org/2000/svg"
+      width={17}
+      height={16}
+      viewBox="0 0 17 16"
+      fill="none"
+    >
+      <path
+        d="M5.56067 12.9076L1.06067 8.40762L6.06067 13.4076L15.5607 0.907623"
+        stroke="#0B3309"
+        strokeWidth={3}
+      />
+    </svg>
+  </label>
+    </div>
+    
+      
+ </div>
+ </div>
+      <div className="button-berechnung">
+        <button className="berechnen-button" onClick={berechneLohn}>Berechnen</button>
+      </div>
+    <ResultView result={result} />
+
+
+      </div>
+
+        {/* <!-- Feedback Form --> */}
+<form name="feedback" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="feedback" />
+  <textarea name="message" defaultValue="" hidden />
+</form>
+
+
+      
+      {/* 
       <p className={`feinplanzuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
         <label>
           Feinplanzuschlag{" "}
@@ -318,7 +533,7 @@ let gesamtZuschlaege = 0;
         <button onClick={berechneLohn}>Berechnen</button>
       </div>
 <hr />
-      <ResultView result={result} />
+      <ResultView result={result} /> */}
     </div>
   );
 }

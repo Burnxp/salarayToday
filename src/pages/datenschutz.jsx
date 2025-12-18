@@ -2,11 +2,11 @@ import { useEffect } from "react";
 
 export default function Datenschutz() {
   useEffect(() => {
-    document.title = "Datenschutzerklärung - SalaryDay";
+    document.title = "Lohnrechner - Datenschutzerklärung";
   }, []);
   return (
 
-<div className="datenSchutz" >
+<div className="text" >
     
 
     
@@ -25,7 +25,7 @@ export default function Datenschutz() {
 
       <h2>1. Allgemeines</h2>
       <p>
-        Diese Webanwendung (<strong>salaryday.netlify.app</strong>) dient der Berechnung von Löhnen mit Zuschlägen.
+        Diese Webanwendung (<strong>schichtlohnrechner.netlify.app</strong>) dient der Berechnung von Löhnen mit Zuschlägen.
         Sie kann ohne Registrierung genutzt werden.
       </p>
 
@@ -41,7 +41,7 @@ export default function Datenschutz() {
         Beim Aufruf der Seite werden automatisch technische Daten (z. B. IP-Adresse, Zeitpunkt, Browsertyp)
         vom Hosting-Anbieter verarbeitet, um den sicheren Betrieb zu gewährleisten.
         Weitere Informationen finden Sie in der Datenschutzerklärung von Netlify:{" "}
-        <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" style={{ color: "#1a73e8", textDecoration: "underline" }}>
+        <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" >
           www.netlify.com/privacy
         </a>.
       </p>

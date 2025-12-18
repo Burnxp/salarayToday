@@ -41,3 +41,11 @@ Erstelle eine Version (Tag):
 
 git tag v1.1
 git push origin v1.1
+
+
+
+
+<!-- AUFGABEN -->
+
+
+Feedback button -> alles andere in den Hintergrund setzen (timer, checkbox, usw)
