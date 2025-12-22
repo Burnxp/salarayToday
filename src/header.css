@@ -59,18 +59,25 @@ header {
   grid-template-rows: repeat(1, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  transition: height 0.9s ease-in-out; /* für das Schrumpfen nötig */
+  transform: scale(1);
+  transition: transform 0.4s ease, height 1.25s ease-in-out;
 }
 /* ON_SCROLL */
 .grid-smal{
   height: var(--header-height-smal);
-  transition: height 0.3s ease-in-out;
+  transition:     transform 1s ease,
+    height 1s ease;
+  transform: scale(0.9);
 }
 
 .grid-smal .container1{
   display: block;
   height: 4rem;
   margin-top: 0.5rem;
+
+  transition:     transform 1s ease,
+    height 1s ease;
+  transform: scale(0.9);
 }
 .grid-smal .container2 {
   display: none;
@@ -110,7 +117,10 @@ header {
 
 /* ************************************************************************** */
 /* logo */
-
+img {
+  width: auto;
+  height: 6.875rem;
+}
 
 /* ************************************************************************* */
 /* Buttons */
