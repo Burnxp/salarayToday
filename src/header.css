@@ -59,7 +59,7 @@ header {
   grid-template-rows: repeat(1, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  transform: scale(1);
+  
   transition: transform 0.4s ease, height 1.25s ease-in-out;
 }
 /* ON_SCROLL */
