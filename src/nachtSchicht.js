@@ -10,7 +10,7 @@ const hourToMin = (time) => {
 };
 
 // Berechnet die Nachtschicht-Minuten
-export function calculateNightShiftMinutes(startTime, endTime, dateString, nachtzeitenStart, nachtzeitenEnd, feiertagMorgen) {
+export function calculateNightShiftMinutes(startTime, endTime, dateString, nachtzeitenStart, nachtzeitenEnd, feiertagMorgen, feiertagToday) {
   let start = hourToMin(startTime);
   let end = hourToMin(endTime);
   const weekDay = getWeekday(dateString);
@@ -31,7 +31,24 @@ export function calculateNightShiftMinutes(startTime, endTime, dateString, nacht
   ];
 
   let nightMinutes = 0;
-if (feiertagMorgen) {
+  // Ist heute ein Feiertag?
+  if (feiertagToday) {
+    console.log("Feiertag heute", feiertagToday);
+      
+    // Feiertag -> Nachtschicht beginnt den darauffolgenden Tag um 0 Uhr
+    const loopStart = Math.max(start, 1440);
+    for (let i = loopStart; i < end; i++) {
+      const timeOfDay = i % 1440;
+      for (const period of nightPeriods) {
+        if (timeOfDay >= period.start && timeOfDay < period.end) {
+          nightMinutes++;
+          break;
+        }
+      }
+    } console.log("Night Minutes nach Feiertag:", nightMinutes);
+  }
+  
+else if (feiertagMorgen) {
   const endLimit = Math.min(end, 1440);
   for (let i = start; i < endLimit; i++) {
     const timeOfDay = i % 1440;

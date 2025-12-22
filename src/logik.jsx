@@ -191,8 +191,10 @@ const berechneLohn = () => {
   gesamtLohn += sonntagsZuschlag + feiertagsZuschlag;
 
   let nachtstunden = calculateNightShiftMinutes(
-    startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd, morgenIstFeiertag === true
+    startTime, endTime, inputValue, nachtzeitenStart, nachtzeitenEnd, morgenIstFeiertag === true, feiertage.includes(inputValue)
   );
+
+
     if (feiertage.includes(inputValue) && weekday(inputValue) === 'Samstag'){
       // Es ist Feiertag und morgen ist Sonntag deshalb werden keine Nachtschichten gezahlt
       console.log('Es ist: ' + feiertage.includes(inputValue) + ' Samstag')
