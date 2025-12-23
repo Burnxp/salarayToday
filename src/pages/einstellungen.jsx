@@ -100,7 +100,7 @@ export function EinstellungenPage() {
     kannst du mit einer kleinen Spende dazu beitragen, sie weiter zu verbessern.</h6>
         <a
     className="button-design coffeeButton"
-    href="https://www.paypal.com/paypalme/bSchaller/2"
+    href="https://www.paypal.com/ncp/payment/5HVJVN7YTS8WL"
     target="_blank"
     rel="noopener noreferrer"
   >
