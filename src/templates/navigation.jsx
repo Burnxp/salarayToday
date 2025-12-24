@@ -1,14 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function NavigationsBar() {
   return (
     <nav className="navigation">
-      <Link className="navigation-link lohnrechnerSeite" to="/">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "navigation-link lohnrechnerSeite active"
+            : "navigation-link lohnrechnerSeite"
+        }
+      >
         Lohnrechner
-      </Link>
-      <Link className="navigation-link einstellungenSeite" to="/einstellungen">
+      </NavLink>
+
+      <NavLink
+        to="/einstellungen"
+        className={({ isActive }) =>
+          isActive
+            ? "navigation-link einstellungenSeite active"
+            : "navigation-link einstellungenSeite"
+        }
+      >
         Einstellungen
-      </Link>
+      </NavLink>
     </nav>
   );
 }
