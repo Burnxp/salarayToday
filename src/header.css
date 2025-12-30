@@ -7,6 +7,8 @@
   --header-height: 8.75rem;
   --header-height-smal: 4.25rem;
   --content-offset: var(--header-height); /* wird überschrieben */
+
+  --border-height: 3.3125rem;
 }
 
 * {
@@ -37,7 +39,7 @@
 
 .app-screen {
   background-color: var(--hintergrund-hell);
-  height: calc(100% - 4rem);
+  height: calc(100% - var(--border-height));
   
   overflow: hidden;
   
@@ -215,7 +217,7 @@ img {
   width: min(100%, 60%);
   bottom: 0rem;
 
-  height: 3.3125rem;
+  height: var(--border-height);
 
   display: flex;
   justify-content: center;
