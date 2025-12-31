@@ -344,7 +344,7 @@ useEffect(() => {
         height={18}
         fill="#BCE6B9"
         stroke="#0B3309"
-        strokeWidth={2}
+        strokeWidth={3}
       />
     </svg>
     {/* dein Haken-SVG */}
@@ -395,7 +395,7 @@ useEffect(() => {
         height={18}
         fill="#BCE6B9"
         stroke="#0B3309"
-        strokeWidth={2}
+        strokeWidth={3}
       />
     </svg>
     {/* dein Haken-SVG */}
@@ -443,7 +443,7 @@ useEffect(() => {
         height={18}
         fill="#BCE6B9"
         stroke="#0B3309"
-        strokeWidth={2}
+        strokeWidth={3}
       />
     </svg>
     {/* dein Haken-SVG */}
