@@ -873,6 +873,7 @@ padding: 0.625rem .3125rem 2.3125rem 0.3125rem;
 .danke{
   border: var(--Color-Marker) 3px double;
   padding: 0.5rem;
+  min-height: fit-content;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
