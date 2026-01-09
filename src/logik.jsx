@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { calculateNightShiftMinutes } from "./nachtSchicht";
 import { useFeiertage } from "./feierTage";
 import { ResultView } from "./result";
 import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 import { useZuschlaege } from "./hooks/useZuschlaege";
 import { useEffect } from "react";
+
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -252,12 +254,33 @@ useEffect(() => {
 }, []);
 
 
-
+const navigate = useNavigate();
   return (
 
 
 /* Schicht-Container */
-    <div className="lohnrechner-layout">
+    <div className="lohnrechner-layout ">
+
+   <div className="flex-lohnDaten">
+  <div className="aktLohndaten">
+    <h2>Lohndaten:</h2>
+    Std. Lohn: {localStorage.getItem("stdLohn")} € <br />
+    Nachtzuschlag: {localStorage.getItem("Nachtzuschlag")} % <br />
+    Sonntagszuschlag: {localStorage.getItem("Sonntagszuschlag")} % <br />
+    Feiertagszuschlag: {localStorage.getItem("Feiertagszuschlag")} % <br />
+    Feinplanzuschlag: {localStorage.getItem("Feinplanzuschlag")} € <br />
+  </div>
+
+  <div className="lohnDatenAendernContainer">
+    <button
+      className="button-design"
+      onClick={() => navigate("/einstellungen")}
+    >
+      Lohndaten ändern
+    </button>
+  </div>
+</div>
+
       
       <div className="schicht-grid">
       <h2 className="schicht-text">Schicht</h2>
@@ -471,6 +494,7 @@ useEffect(() => {
         <button className="berechnen-button" onClick={berechneLohn}>Berechnen</button>
       </div>
     <ResultView result={result} />
+
  </div>
 
         {/* <!-- Feedback Form --> */}
