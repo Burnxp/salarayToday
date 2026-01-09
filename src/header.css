@@ -260,6 +260,38 @@ img {
   
 }
 
+
+
+/* Lohndaten */
+
+.flex-lohnDaten {
+  margin-top: 1rem;
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.aktLohndaten {
+  color: var(--Color-Marker);
+  flex: 1.5;
+  border: var(--Color-1) solid 1px;
+  padding: 0.45rem;
+  border-radius: 25px;
+}
+
+.lohnDatenAendernContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.lohnDatenAendernContainer button {
+  padding: .2rem;
+}
+
+
+
 /* Schicht */
 
 
