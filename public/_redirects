@@ -1,1 +1,5 @@
+# 1. Die Domain-Weiterleitung (Immer ganz nach oben)
+salaryday.netlify.app*  lohnrechner.de  301!
+
+# 2. Das SPA-Fallback für deine App (für das Routing)
 /*    /index.html   200
