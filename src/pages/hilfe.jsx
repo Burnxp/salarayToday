@@ -3,7 +3,7 @@
     
     export function Hilfe() {
   useEffect(() => {
-    document.title = "Lohnrechner - Hilfe";
+    document.title = "Schichtlohnrechner - Hilfe & FAQ";
   }, []);
     return (
 <div className="text">
