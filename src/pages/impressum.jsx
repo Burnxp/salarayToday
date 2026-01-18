@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export default function Impressum() {
   useEffect(() => {
-    document.title = "Lohnrechner - Impressum";
+    document.title = "Schichtlohnrechner - Impressum";
   }, []);
 
   return (

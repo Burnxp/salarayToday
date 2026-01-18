@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export default function Datenschutz() {
   useEffect(() => {
-    document.title = "Lohnrechner - Datenschutzerklärung";
+    document.title = "Schichtlohnrechner - Datenschutzerklärung";
   }, []);
   return (
 

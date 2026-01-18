@@ -27,7 +27,7 @@ export function EinstellungenPage() {
 
   return (
     useEffect(() => {
-      document.title = "Einstellungen - Lohnrechner";
+      document.title = "Schichtlohnrechner – Schichtdaten & Zuschläge anpassen";
     }, []),
 
 

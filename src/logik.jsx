@@ -249,9 +249,7 @@ let gesamtZuschlaege = 0;
   });
 };
 
-useEffect(() => {
-  document.title = "SalaryDay - Lohnrechner";
-}, []);
+
 
 
 const navigate = useNavigate();
