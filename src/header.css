@@ -250,17 +250,16 @@ img {
   width: 24.375rem;
   margin: 0 auto;
   margin-top: calc(var(--content-offset));
-  padding-bottom: 30rem;
+  padding-bottom: calc(var(--border-height) +  1rem);
   display: flex;
   flex-direction: column;
   min-height: 80%;
   align-items: center;
-  overflow-y: auto; /* scrollt nur, wenn Inhalt zu groß */
-  max-height: 100%; /* maximal so groß wie der Viewport */
-  
+  overflow-y: auto;
+  /* scrollt nur, wenn Inhalt zu groß */
+  max-height: 100%;
+  /* maximal so groß wie der Viewport */
 }
-
-
 
 /* Lohndaten */
 
@@ -689,10 +688,12 @@ box-shadow: 5px 10px 20px 5px rgba(11, 51, 9, 0.66) inset, 4px 6px 8px 0 rgba(0,
 }
 
 /* Result Grid */
-
+.resultContainer{
+  height: 15rem;
+}
 .container {
   display: grid;
-  
+  width: 23rem;
   grid-template-columns: repeat(6, 1fr);   /* 6 gleich breite Spalten */
   grid-template-rows: auto auto auto;      /* 3 Reihen */
   row-gap: 0.3125rem;
@@ -903,9 +904,12 @@ padding: 0.625rem .3125rem 2.3125rem 0.3125rem;
   line-height: normal;
 }
 .danke{
-  border: var(--Color-Marker) 3px double;
+  color: var(--Color-Marker);
+  border: var(--Color-Marker) 5px double;
   padding: 0.5rem;
   min-height: fit-content;
+  width: 22.5rem;
+  margin: 0 auto;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
@@ -999,7 +1003,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
-    /* Wenn Modal offen ist: Icons verstecken */
 
   
 
