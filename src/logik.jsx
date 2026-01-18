@@ -247,6 +247,8 @@ let gesamtZuschlaege = 0;
     gesamtZuschlaege: gesamtZuschlaege.toFixed(2),
     gesamtLohn: gesamtLohn.toFixed(2)
   });
+ 
+
 };
 
 
@@ -257,7 +259,7 @@ const navigate = useNavigate();
 
 
 /* Schicht-Container */
-    <div className="lohnrechner-layout ">
+    <><div className="lohnrechner-layout ">
 
    <div className="flex-lohnDaten">
   <div className="aktLohndaten">
@@ -280,7 +282,7 @@ const navigate = useNavigate();
 </div>
 
       
-      <div className="schicht-grid">
+  <div className="schicht-grid">
       <h2 className="schicht-text">Schicht</h2>
       
 <div className="schicht-button-container">
@@ -305,10 +307,10 @@ const navigate = useNavigate();
     Nacht
   </button>
 </div>
-
+</div>
 
       
-      </div>
+      
 {/* Worktime */}
 <div className="arbeitszeit">
     <div className="arbeitszeit-container">
@@ -337,8 +339,9 @@ const navigate = useNavigate();
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
         />
-</div>
-    <div className="pause-tageszuschlag">
+</div> </div>
+<div> <div>
+  <div className="pause-tageszuschlag">
       <div className="pause-container">
         
           <div className="pause-flex">
@@ -488,79 +491,47 @@ const navigate = useNavigate();
       
  </div>
  </div>
+</div> </div>
+<div>
+    <div>
       <div className="button-berechnung">
         <button className="berechnen-button" onClick={berechneLohn}>Berechnen</button>
       </div>
-    <ResultView result={result} />
-
+      </div>
+      
+    </div>
+      <div className="resultContainer">
+        <ResultView result={result} />
+      </div>
+      <div>
+      
+    
+     
+<div className="danke ">
+      <h6 >Freut mich, dass du die App nutzt! Wenn dir die Arbeit dahinter gefällt, 
+    kannst du mit einer kleinen Spende dazu beitragen, sie weiter zu verbessern.</h6>
+        <a
+    className="button-design coffeeButton"
+    href="https://www.paypal.com/ncp/payment/5HVJVN7YTS8WL"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    ☕ Jetzt unterstützen!
+  </a> </div>
+  
  </div>
+
 
         {/* <!-- Feedback Form --> */}
 <form name="feedback" data-netlify="true" hidden>
   <input type="hidden" name="form-name" value="feedback" />
   <textarea name="message" defaultValue="" hidden />
 </form>
-
-
-      
-      {/* 
-      <p className={`feinplanzuschlag ${parseFloat(feinplanzuschlag || 0) > 0 ? "visible" : "hidden"}`}>
-        <label>
-          Feinplanzuschlag{" "}
-          <span className="smal">(Komplett oder &frac12;)</span>: <br />
-          1:
-         <input
-  type="checkbox"
-  checked={feinPlanChecked}
-  onChange={(e) => {
-    setFeinPlanChecked(e.target.checked);
-    if (e.target.checked) setFeinPlanHalfChecked(false);
-  }}
-/>
-1/2:
-<input
-  type="checkbox"
-  checked={feinPlanHalfChecked}
-  onChange={(e) => {
-    setFeinPlanHalfChecked(e.target.checked);
-    if (e.target.checked) setFeinPlanChecked(false);
-  }}
-  
-/> 
-        </label> 
-      </p> <br />
-      <div className="pause">
-        <label>
-          Pause (unbezahlt 30 Min):
-          <input type="checkbox" ref={pause} />
-        </label>
-      </div>
-
-      <div className="workTime">
-        <p>
-          Arbeitszeit:
-          <input type="date" value={inputValue} onChange={dateHandleChange} />
-        </p>
-
-        <p className="workTime">
-          <input
-            type="time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-          />{" "}
-          bis{" "}
-          <input
-            type="time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-          />
-        </p>
-
-        <button onClick={berechneLohn}>Berechnen</button>
-      </div>
-<hr />
-      <ResultView result={result} /> */}
+              
     </div>
+
+    </>
+
   );
 }
 
