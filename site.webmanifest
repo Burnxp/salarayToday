@@ -1,5 +1,5 @@
 {
-  "name": "Schicht - Lohnrechner",
+  "name": "Schichtlohnrechner",
   "short_name": "Lohnrechner",
   "icons": [
     {
@@ -16,6 +16,6 @@
     }
   ],
   "theme_color": "#366633",
-  "background_color": "#366633",
+  "background_color": "#bce6b9",
   "display": "standalone"
 }
