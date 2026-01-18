@@ -25,7 +25,7 @@ export default function Datenschutz() {
 
       <h2>1. Allgemeines</h2>
       <p>
-        Diese Webanwendung (<strong>schichtlohnrechner.netlify.app</strong>) dient der Berechnung von Löhnen mit Zuschlägen.
+        Diese Webanwendung (<strong>schichtlohnrechner.netlify.app</strong> bzw. <strong>schichtlohnrechner.de</strong>) dient der Berechnung von Löhnen mit Zuschlägen.
         Sie kann ohne Registrierung genutzt werden.
       </p>
 
