@@ -1,7 +1,9 @@
 :root {
   --hintergrund-hell: #bce6b9;
+  --hintergrund-hell-rgb: 188, 230, 185;
   --Color-Marker: #1e5128;
   --Color-1: #3a6b35;
+  --Color-1-rgb: 58, 107, 53;
   --normal-text: "Source Sans Pro", sans-serif;
 
   --header-height: 8.75rem;
@@ -46,9 +48,12 @@
   
 }
 header {
-  background-color: var(--hintergrund-hell);
+  background-color: rgba(var(--Color-1-rgb-rgb), 0.9);
   position: fixed;
   top: 0;
+  
+  
+ 
 }
 
 .grid {
@@ -60,7 +65,7 @@ header {
   column-gap: 10px;
   grid-template-rows: repeat(1, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
+  
   
   transition: transform 0.4s ease, height 1.25s ease-in-out;
 }
@@ -69,7 +74,7 @@ header {
   height: var(--header-height-smal);
   transition:     transform 1s ease,
     height 1s ease;
-  transform: scale(0.9);
+  
 }
 
 .grid-smal .container1{
@@ -131,7 +136,7 @@ img {
   height: 1.875rem;
 }
 
-.container10 {
+.container8 {
   display: flex;
   justify-content: flex-end;
 }
@@ -143,9 +148,9 @@ img {
 }
 
 .button-design {
-  border-radius: 0.45288rem;
+  border-radius: 0.2rem;
   border: 1.449px solid rgba(11, 51, 9, 0.1);
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(var(--Color-1-rgb), 0.09);
   box-shadow: 0 0 7.246px 0 rgba(11, 51, 9, 0.8) inset,
     2.899px 4.348px 5.797px 0 var(--Color-Marker, #0b3309);
   /* text */
@@ -163,6 +168,11 @@ img {
     box-shadow 0.25s ease, 
     opacity 0.25s ease;
     min-width: fit-content;
+}
+
+.berechnen-button:hover {
+  background-color: color-mix(in srgb, var(--Color-1) 80%, black);
+  cursor: pointer;
 }
 
 /* Klick-Effekt: „gedrückt“ */
@@ -272,10 +282,14 @@ img {
 
 .aktLohndaten {
   color: var(--Color-Marker);
-  flex: 1.5;
-  border: var(--Color-1) solid 1px;
-  padding: 0.45rem;
-  border-radius: 25px;
+  background-color: rgba(var(--Color-1-rgb), 0.09);
+  flex: 1.75;
+  margin-top: 0.3rem;
+  padding: 0.75rem;
+  
+  border-radius: 5px;
+  box-shadow: inset 0rem 0rem .2rem .2rem var(--Color-1);
+
 }
 
 .lohnDatenAendernContainer {
@@ -283,10 +297,18 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
 }
 .lohnDatenAendernContainer button {
   padding: .2rem;
+  margin: .2rem;
+}
+
+.showButton {
+  padding: .5rem;
+  margin: .5rem;
+  margin-top: 2rem;
+  
 }
 
 
