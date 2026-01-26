@@ -63,7 +63,7 @@ export default function Datenschutz() {
         Diese Datenschutzerklärung kann bei Bedarf angepasst werden, wenn gesetzliche oder technische Änderungen erfolgen.
       </p>
 
-      <p >Stand: Oktober 2025</p>
+      <p >Stand: Januar 2026</p>
     </div>
   );
 }
