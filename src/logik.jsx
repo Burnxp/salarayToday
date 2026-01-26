@@ -62,7 +62,7 @@ export function Rechner() {
 
   const [pause, setPause] = useState(false);
 
-  
+  const [show, setShow] = useState(true);
 
   const zeiten = {
     frueh: { start: "05:30", ende: "13:45" },
@@ -259,17 +259,20 @@ const navigate = useNavigate();
 
 
 /* Schicht-Container */
-    <><div className="lohnrechner-layout ">
-
-   <div className="flex-lohnDaten">
+  <><div className="lohnrechner-layout ">
+{show && (
+  <div className="flex-lohnDaten">
   <div className="aktLohndaten">
-    <h2>Lohndaten:</h2>
+    
+      <h2>Lohndaten:</h2>
     Std. Lohn: {localStorage.getItem("stdLohn")} € <br />
     Nachtzuschlag: {localStorage.getItem("Nachtzuschlag")} % <br />
     Sonntagszuschlag: {localStorage.getItem("Sonntagszuschlag")} % <br />
     Feiertagszuschlag: {localStorage.getItem("Feiertagszuschlag")} % <br />
     Feinplanzuschlag: {localStorage.getItem("Feinplanzuschlag")} € <br />
   </div>
+    
+  
 
   <div className="lohnDatenAendernContainer">
     <button
@@ -278,9 +281,17 @@ const navigate = useNavigate();
     >
       Lohndaten ändern
     </button>
+    
+      
+
   </div>
 </div>
-
+)}    <button
+      className="button-design showButton"
+      onClick={() => setShow(!show)}
+    >
+      { show ? 'Lohndaten ausblenden' : 'Lohndaten anzeigen' }
+    </button>
       
   <div className="schicht-grid">
       <h2 className="schicht-text">Schicht</h2>
