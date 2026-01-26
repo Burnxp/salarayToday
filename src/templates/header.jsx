@@ -69,22 +69,24 @@ export function Header() {
             Impressum
           </Link>
         </div>
-        <div className="container7" />
-        <div className="container8" />
-        <div className="container9">
-          <button className="feedbackButton button-design" onClick={() => setShowForm(true)}>
+        <div className="container7">
+           <button className="feedbackButton button-design" onClick={() => setShowForm(true)}>
             Feedback
           </button>
           {showForm && <FeedbackForm onClose={() => setShowForm(false)} />}
         </div>
-        <div className="container10">
-           <button
+        <div className="container8">
+                     <button
       className="hilfeButton button-design"
       onClick={() => navigate("/hilfe")}
     >
-      ?
+      Hilfe
     </button>
         </div>
+        <div className="container9" />
+
+        <div className="container10" />
+
       </div>
     </div>
   </header>
