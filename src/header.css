@@ -49,7 +49,7 @@
 }
 header {
   background-color: rgba(var(--Color-1-rgb-rgb), 0.9);
-  position: fixed;
+  width: 100%;
   top: 0;
   
   
@@ -259,7 +259,7 @@ img {
 .lohnrechner-layout {
   width: 24.375rem;
   margin: 0 auto;
-  margin-top: calc(var(--content-offset));
+  
   padding-bottom: calc(var(--border-height) +  1rem);
   display: flex;
   flex-direction: column;
@@ -777,7 +777,6 @@ padding: 0.625rem .3125rem 2.3125rem 0.3125rem;
   
   margin: 0 auto;
   width: 24.375rem;
-  margin-top: var(--content-offset);
   
   flex-direction: column;
   align-items: flex-start;
@@ -951,7 +950,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   }
   .app-screen {
     margin: 0rem auto;
-    min-height: 100vw;
+    min-height: 100vh;
     overflow: hidden;
     
   }
@@ -964,7 +963,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     width: 60%;
     
   }
-  .navigation, header {
+  .navigation {
     width: 50%;
     
   }
@@ -995,7 +994,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     width: 90%;
     
   }
-  .navigation, header {
+  .navigation {
     width: 70%;
     
   }
@@ -1013,9 +1012,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   .navigation {
     width: 100%;
   }
-  header {
-    width: 100%;
-  }
+
   .app-screen {
     width: 100%;
   }
