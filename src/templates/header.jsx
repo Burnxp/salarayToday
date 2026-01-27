@@ -1,48 +1,13 @@
 import LRLogo from '../assets/lohnrechner-logo.svg';
 import FeedbackForm from '../feedbackForm';
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function Header() {
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
 
-  const location = useLocation();
 
-  useEffect(() => {
-    // passenden Scroll-Container für aktuelle Route holen
-    const scrollContainer =
-      document.querySelector(".lohnrechner-layout") ||
-      document.querySelector(".einstellungen-layout") ||
-      document.querySelector(".text");
-
-    const headerGrid = document.querySelector(".grid");
-    if (!scrollContainer || !headerGrid) return;
-
-    const onScroll = () => {
-      const scrollTop = scrollContainer.scrollTop;
-      if (scrollTop > 0) {
-        headerGrid.classList.add("grid-smal");
-              document.documentElement.style.setProperty(
-        "--content-offset",
-        "4rem"
-      );
-      } else {
-        headerGrid.classList.remove("grid-smal");
-        document.documentElement.style.setProperty(
-        "--content-offset",
-        "7.75rem"
-        );
-      }
-    };
-
-    scrollContainer.addEventListener("scroll", onScroll);
-
-    // beim Route-Wechsel oder Unmount wieder sauber entfernen
-    return () => {
-      scrollContainer.removeEventListener("scroll", onScroll);
-    };
-  }, [location.pathname]); // Effekt läuft neu bei jedem Seitenwechsel
 
 
 
