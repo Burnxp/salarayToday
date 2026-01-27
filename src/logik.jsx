@@ -4,7 +4,7 @@ import { useFeiertage } from "./feierTage";
 import { ResultView } from "./result";
 import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 import { useZuschlaege } from "./hooks/useZuschlaege";
-import { useEffect } from "react";
+
 
 import { useNavigate } from 'react-router-dom';
 
@@ -514,8 +514,26 @@ const navigate = useNavigate();
       <div className="resultContainer">
         <ResultView result={result} />
       </div>
-      <div>
-      
+    <div>
+      <section class="seo-text text">
+  <h2>Tageslohn im Schichtdienst einfach berechnen</h2>
+  <p>
+    Mit unserem <strong>kostenlosen und werbefreien Schichtlohnrechner </strong> 
+    berechnest du deinen <strong>Tageslohn im Schichtdienst</strong> schnell und
+    zuverlässig. Trage deinen <strong>Stundenlohn</strong> und deine
+     <strong> Arbeitszeit pro Tag</strong> ein und wähle aus, ob es sich um eine
+    <strong> Nachtschicht</strong>, <strong> Feiertagsschicht</strong> oder
+    reguläre Arbeitszeit handelt.
+  </p>
+  <p>
+    Der Rechner berücksichtigt automatisch <strong>Nachtzuschläge</strong>, 
+    <strong> Feiertagszuschläge </strong> und weitere Schichtzulagen und zeigt dir
+    deinen <strong>exakten Tagesverdienst</strong> an. So siehst du sofort, was
+    du an einem Arbeitstag wirklich verdienst – <strong>transparent</strong>,
+    <strong> anonym</strong> und <strong>ohne Anmeldung</strong>.
+  </p>
+</section>
+
     
      
 <div className="danke ">
