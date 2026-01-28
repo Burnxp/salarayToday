@@ -32,7 +32,7 @@
         max-height: 100%;
         background-color: var(--hintergrund-hell);
         font-family: var(--normal-text);
-        font-size: clamp(1rem, 1.5vw + 0.5rem, 3rem);
+        font-size: clamp(1rem, 1.5vw + 0.5rem, 2.0rem);
         font-weight: 400;
         line-height: 1.5;
         color: var(--Color-1, #366633);
@@ -40,15 +40,30 @@
         
     }
 
-    .text a{
-        color: var(--Color-Marker, #1E5128);
-        text-decoration: none;
-        
-    }
-    .text a:hover{
-        text-decoration: underline;
-    }
+
 
     .hidden {
         display: none;
     }
+
+
+    .text a {
+                color: var(--Color-Marker, #1E5128);
+        text-decoration: none;
+        font-style: italic;
+        background-color: #1e512844;
+        padding: 0.3rem;
+        box-sizing: 0 0.5 0.5rem black;
+        text-decoration: none;
+        border-radius: 5px;
+        
+
+    }
+
+    .text a:hover{
+        color: #1e51286b;
+        text-decoration: unset;
+
+    }
+
+    
