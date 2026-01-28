@@ -1,5 +1,6 @@
     
     import { useEffect } from "react";
+    import { Link } from "react-router-dom";
     
     export function Hilfe() {
   useEffect(() => {
@@ -98,6 +99,7 @@
       zu verbessern.
     </p>
   </section>
+  <Link to="/">Zurück zum Lohnrechner</Link>
 </div>
 
     )}
