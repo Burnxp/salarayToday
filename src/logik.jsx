@@ -6,7 +6,7 @@ import { calculateFeinPlanZuschlag } from "./feinPlanzuschlag";
 import { useZuschlaege } from "./hooks/useZuschlaege";
 
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -532,6 +532,7 @@ const navigate = useNavigate();
     du an einem Arbeitstag wirklich verdienst – <strong>transparent</strong>,
     <strong> anonym</strong> und <strong>ohne Anmeldung</strong>.
   </p>
+  <Link to="/hilfe">klicke hier</Link> für mehr Infos.
 </section>
 
     
