@@ -1,18 +1,20 @@
-<<<<<<< HEAD
-### Salaray Today
-#- In dieser Anwendung kann ein Nutzer einige Lohndaten eingeben. Dadurch kann er sich anzeigen lassen was er heute verdient.
-#- primär für Schichtarbeiter mit Feiertag und Wochenenddiensten
-=======
-# React + Vite
+# Salaray Today
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Eine Web-App, mit der Schichtarbeiter anhand von Eingaben berechnen können,
+was sie *heute* verdienen (inkl. Zuschläge).
 
-Currently, two official plugins are available:
+✔️ React + Vite  
+✔ Berechnungslogik für Schichten & Feiertage  
+📍 Live Demo: https://schichtlohnrechner.de  
+📦 Install: `npm i` | `npm run dev`  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
+- Stunden-/Feiertagsberechnung
+- Nachtzuschläge & Wochenend-Logik
+- Ergebnisdarstellung
+- Feiertag API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> dc44a36 (feat: Implement wage calculator with night shift and holiday surcharge calculations)
+## Was ich gelernt habe
+- State-Management in React  
+- Edge-Cases bei Zeit-Berechnung  
